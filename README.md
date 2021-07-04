@@ -1,62 +1,37 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Kindergo Portal
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Installation instructions
 
-## About Laravel
+On server we use Apache, PHP 8, MySQL 8.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Application uses Laravel 8.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+These are the steps to get the app up and running. Once you're using the app, feel free to change any individual parts.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+After pulling project, you need to do following:
 
-## Learning Laravel
+* Extract the archive and put it in the folder you want
+* Run `cp .env.example .env` file to copy example file to `.env`
+* Then edit your `.env` file with DB credentials and other settings.
+* Create a MySQL database. If you want to use a non-root user, make sure that the user has permissions to create other users and access all databases (or change the DB manager used for mysql to the one that does not create permissions). Add the database name to your `.env`
+* Start Redis (it's used as the queue driver — feel free to change this to any other asynchronous driver)
+* Run `composer install` command
+* Run `php artisan migrate --seed` command. Notice: seed is important, because it will create the first admin user for you.
+* Run `php artisan key:generate` command.
+* Configure the app URL & domains
+    - If you're using Valet, you can go with the default set-up. Just make sure your project is accessible on `delta.test`
+    - If you're using php artisan serve, make localhost your central & Nova domain (replace the `delta.test` instances with localhost in .env). Your development tenants will have domains like `foo.localhost` and `bar.localhost`
+    - If you're using anything else — the process will be similar to the one to php artisan serve.
+* Run `npm install`
+* Run `npm run dev`
+* If you have file/photo fields, run `php artisan storage:link` command.
+* Laravel Sanctum for API Auth: If you are using custom hostname for project other than localhost make sure that value of `SANCTUM_STATEFUL_DOMAINS` variable in `.env` file is the same as your hostname in browser. Example: `SANCTUM_STATEFUL_DOMAINS=portal.kindergo.site`
+* Run the queue worker: `php artisan queue:work`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+And that's it, go to your domain and login:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Default credentials
 
-## Laravel Sponsors
+Username: `admin@admin.com`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Password: `password`
