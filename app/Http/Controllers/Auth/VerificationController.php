@@ -18,7 +18,6 @@ class VerificationController extends Controller
     | be re-sent if the user didn't receive the original email message.
     |
     */
-
     use VerifiesEmails;
 
     /**
@@ -32,6 +31,7 @@ class VerificationController extends Controller
      * Create a new controller instance.
      *
      * @return void
+     * @psalm-suppress TooManyArguments
      */
     public function __construct()
     {

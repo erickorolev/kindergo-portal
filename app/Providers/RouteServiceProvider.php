@@ -53,6 +53,9 @@ class RouteServiceProvider extends ServiceProvider
      * Configure the rate limiters for the application.
      *
      * @return void
+     * @psalm-suppress PossiblyNullArgument
+     * @psalm-suppress MixedArgument
+     * @psalm-suppress MixedPropertyFetch
      */
     protected function configureRateLimiting()
     {
