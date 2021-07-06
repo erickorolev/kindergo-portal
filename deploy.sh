@@ -2,5 +2,5 @@
 
 cd ~/www
 git pull origin master
-compose install
+composer install
 php8.0 artisan migrate
