@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Parents\Middlewares\Http;
+namespace Parents\Middlewares\Http;
 
 use Closure;
-use App\Parents\Requests\Request;
+use Parents\Requests\Request;
 
-class SetPreferredLocale extends \App\Parents\Middlewares\Middleware
+class SetPreferredLocale extends \Parents\Middlewares\Middleware
 {
     /**
      * @param \Illuminate\Http\Request $request

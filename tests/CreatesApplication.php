@@ -10,6 +10,9 @@ trait CreatesApplication
      * Creates the application.
      *
      * @return \Illuminate\Foundation\Application
+     * @psalm-suppress MixedMethodCall
+     * @psalm-suppress MixedAssignment
+     * @psalm-suppress MixedInferredReturnType
      */
     public function createApplication()
     {

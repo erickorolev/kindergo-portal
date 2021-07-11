@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-
-namespace Tests\Feature\System;
+namespace Units\Tests\Feature;
 
 use App\Exceptions\Handler;
 use Illuminate\Auth\AuthenticationException;

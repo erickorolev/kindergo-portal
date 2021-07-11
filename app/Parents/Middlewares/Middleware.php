@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Parents\Middlewares;
+namespace Parents\Middlewares;
 
 abstract class Middleware
 {

@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
+namespace Units\Tests\Unit;
 
-namespace Tests\Unit\System;
-
-use App\Parents\Middlewares\Http\EnsureCorrectApiHeaders;
+use Parents\Middlewares\Http\EnsureCorrectApiHeaders;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use PHPUnit\Framework\TestCase;

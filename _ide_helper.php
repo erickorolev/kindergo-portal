@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.49.1.
+ * Generated for Laravel 8.49.2.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1807,7 +1807,7 @@
                     /**
          * Get the currently authenticated user.
          *
-         * @return \App\Domains\Models\User|null 
+         * @return \Domains\Users\Models\User|null 
          * @static 
          */ 
         public static function user()
@@ -1842,7 +1842,7 @@
          * Log the given user ID into the application without sessions or cookies.
          *
          * @param mixed $id
-         * @return \App\Domains\Models\User|false 
+         * @return \Domains\Users\Models\User|false 
          * @static 
          */ 
         public static function onceUsingId($id)
@@ -1920,7 +1920,7 @@
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \App\Domains\Models\User|false 
+         * @return \Domains\Users\Models\User|false 
          * @static 
          */ 
         public static function loginUsingId($id, $remember = false)
@@ -1972,7 +1972,7 @@
          *
          * @param string $password
          * @param string $attribute
-         * @return \App\Domains\Models\User|null 
+         * @return \Domains\Users\Models\User|null 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */ 
@@ -1996,7 +1996,7 @@
                     /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \App\Domains\Models\User 
+         * @return \Domains\Users\Models\User 
          * @static 
          */ 
         public static function getLastAttempted()
@@ -2098,7 +2098,7 @@
                     /**
          * Return the currently cached user.
          *
-         * @return \App\Domains\Models\User|null 
+         * @return \Domains\Users\Models\User|null 
          * @static 
          */ 
         public static function getUser()
@@ -2144,7 +2144,7 @@
                     /**
          * Determine if the current user is authenticated. If not, throw an exception.
          *
-         * @return \App\Domains\Models\User 
+         * @return \Domains\Users\Models\User 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */ 
@@ -15380,6 +15380,17 @@
                     /**
          * 
          *
+         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
+         * @param string $description
+         * @static 
+         */ 
+        public static function ray($description = '')
+        {
+                        return \Illuminate\Support\Collection::ray($description);
+        }
+                    /**
+         * 
+         *
          * @see \Spatie\Fractal\FractalServiceProvider::setupMacro()
          * @param mixed $transformer
          * @static 
@@ -15387,6 +15398,24 @@
         public static function transformWith($transformer)
         {
                         return \Illuminate\Support\Collection::transformWith($transformer);
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Stringable {
+                    /**
+         * 
+         *
+         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
+         * @param string $description
+         * @static 
+         */ 
+        public static function ray($description = '')
+        {
+                        return \Illuminate\Support\Stringable::ray($description);
         }
          
     }
@@ -16393,6 +16422,16 @@
         public static function assertJsonTypedStructure($structure)
         {
                         return \Illuminate\Testing\TestResponse::assertJsonTypedStructure($structure);
+        }
+                    /**
+         * 
+         *
+         * @see \Spatie\LaravelRay\RayServiceProvider::registerMacros()
+         * @static 
+         */ 
+        public static function ray()
+        {
+                        return \Illuminate\Testing\TestResponse::ray();
         }
          
     }

@@ -2,8 +2,8 @@
 
 namespace App\Http;
 
-use App\Parents\Middlewares\Http\EnsureCorrectApiHeaders;
-use App\Parents\Middlewares\Http\SetPreferredLocale;
+use Parents\Middlewares\Http\EnsureCorrectApiHeaders;
+use Parents\Middlewares\Http\SetPreferredLocale;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel

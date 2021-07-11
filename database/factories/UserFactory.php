@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Domains\Models\User;
+use Domains\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -20,6 +20,7 @@ class UserFactory extends Factory
      *
      * @return array
      * @psalm-suppress UndefinedMagicMethod
+     * @psalm-suppress MixedMethodCall
      */
     public function definition()
     {

@@ -2,10 +2,10 @@
 
 namespace Tests;
 
-use App\Domains\Models\User;
+use Domains\Users\Models\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Laravel\Sanctum\Sanctum;
-use Tests\Traits\VndApiJsonTrait;
+use Units\Tests\Traits\VndApiJsonTrait;
 
 abstract class TestCase extends BaseTestCase
 {

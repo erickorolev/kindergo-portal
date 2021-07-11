@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Parents\Middlewares\Http;
+namespace Parents\Middlewares\Http;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-final class EnsureCorrectApiHeaders extends \App\Parents\Middlewares\Middleware
+final class EnsureCorrectApiHeaders extends \Parents\Middlewares\Middleware
 {
     /**
      * Handle an incoming request
