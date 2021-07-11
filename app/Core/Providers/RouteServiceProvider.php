@@ -7,9 +7,12 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Parents\Loaders\RoutesLoaderTrait;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    use RoutesLoaderTrait;
+
     /**
      * The path to the "home" route for your application.
      *
@@ -17,7 +20,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/admin';
 
     /**
      * The controller namespace for the application.
@@ -36,6 +39,7 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
+        $this->runRoutesAutoLoader();
 
         $this->routes(function () {
             Route::prefix('api')
@@ -53,14 +57,24 @@ class RouteServiceProvider extends ServiceProvider
      * Configure the rate limiters for the application.
      *
      * @return void
-     * @psalm-suppress PossiblyNullArgument
-     * @psalm-suppress MixedArgument
      * @psalm-suppress MixedPropertyFetch
      */
     protected function configureRateLimiting()
     {
         RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
+            /** @var string $login */
+            $login = optional($request->user())->id ?: $request->ip();
+            return Limit::perMinute(60)->by($login);
         });
+    }
+
+    /**
+     * Define the routes for the application.
+     *
+     * @return void
+     */
+    public function map(): void
+    {
+        $this->runRoutesAutoLoader();
     }
 }

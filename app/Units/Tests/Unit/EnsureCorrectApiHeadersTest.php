@@ -7,9 +7,9 @@ namespace Units\Tests\Unit;
 use Parents\Middlewares\Http\EnsureCorrectApiHeaders;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use PHPUnit\Framework\TestCase;
+use Parents\Tests\PhpUnit\UnitTestCase;
 
-class EnsureCorrectApiHeadersTest extends TestCase
+class EnsureCorrectApiHeadersTest extends UnitTestCase
 {
     public function testAbortsRequestIfAcceptHeaderDoesNotAdhereToJsonApiSpec(): void
     {

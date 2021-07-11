@@ -4,6 +4,11 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Parents\Commands\GetPortalVersionCommand;
+use Parents\Commands\ListActionsCommand;
+use Parents\Commands\ListTasksCommand;
+use Parents\Commands\SeedDeploymentDataCommand;
+use Parents\Commands\SeedTestingDataCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,7 +18,11 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        SeedDeploymentDataCommand::class,
+        SeedTestingDataCommand::class,
+        ListActionsCommand::class,
+        ListTasksCommand::class,
+        GetPortalVersionCommand::class,
     ];
 
     /**

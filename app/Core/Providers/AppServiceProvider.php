@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\ServiceProvider;
+use Parents\Foundation\Portal;
 use Spatie\Fractal\Facades\Fractal;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,9 +14,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        //
+        $this->app->bind('Portal', function (): Portal {
+            return new Portal();
+        });
     }
 
     /**

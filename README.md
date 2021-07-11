@@ -19,8 +19,8 @@ After pulling project, you need to do following:
 * Run `php artisan migrate --seed` command. Notice: seed is important, because it will create the first admin user for you.
 * Run `php artisan key:generate` command.
 * Configure the app URL & domains
-    - If you're using Valet, you can go with the default set-up. Just make sure your project is accessible on `delta.test`
-    - If you're using php artisan serve, make localhost your central & Nova domain (replace the `delta.test` instances with localhost in .env). Your development tenants will have domains like `foo.localhost` and `bar.localhost`
+    - If you're using Valet, you can go with the default set-up. Just make sure your project is accessible on `portal.test`
+    - If you're using php artisan serve, make localhost your central & Nova domain (replace the `portal.test` instances with localhost in .env). Your development tenants will have domains like `foo.localhost` and `bar.localhost`
     - If you're using anything else — the process will be similar to the one to php artisan serve.
 * Run `npm install`
 * Run `npm run dev`
