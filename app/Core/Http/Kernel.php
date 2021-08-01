@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Parents\Middlewares\Http\EnsureCorrectApiHeaders;
+use Parents\Middlewares\Http\IsAdmin;
 use Parents\Middlewares\Http\SetPreferredLocale;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -68,5 +69,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'json.api.headers' => EnsureCorrectApiHeaders::class,
+        'is_admin' => IsAdmin::class
     ];
 }

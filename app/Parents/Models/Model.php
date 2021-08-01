@@ -40,4 +40,16 @@ abstract class Model extends LaravelModel
         $factory = call_user_func(array($namespace, 'new'));
         return $factory;
     }
+
+    public function toCrmArray(): array
+    {
+        $data = $this->toArray();
+        unset(
+            $data['crmid'],
+            $data['id'],
+            $data['created_at'],
+            $data['updated_at'],
+        );
+        return $data;
+    }
 }

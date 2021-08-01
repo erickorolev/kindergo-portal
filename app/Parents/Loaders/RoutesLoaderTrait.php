@@ -96,7 +96,7 @@ trait RoutesLoaderTrait
     {
         Route::group(['prefix' => 'admin',
             'as' => 'admin.', 'middleware' => [
-                'web', 'auth', 'role:Admin|Manager']], function (Router $router) use ($file) {
+                'web', 'auth']], function (Router $router) use ($file) {
                     require $file->getPathname();
                 });
     }
@@ -166,7 +166,7 @@ trait RoutesLoaderTrait
     private function getMiddlewares(): array
     {
         return array_filter([
-            'api',
+            'auth:sanctum',
             $this->getRateLimitMiddleware(), // returns NULL if feature disabled. Null will be removed form the array.
         ]);
     }

@@ -8,6 +8,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Parents\Requests\Request;
 use Parents\Traits\SanitizerTrait;
+use Parents\ValueObjects\ValueObject;
+use Spatie\DataTransferObject\Arr;
+use Spatie\DataTransferObject\DataTransferObject;
 
 abstract class ObjectData extends \Spatie\DataTransferObject\DataTransferObject
 {
@@ -46,5 +49,34 @@ abstract class ObjectData extends \Spatie\DataTransferObject\DataTransferObject
             return collect([]);
         }
         return collect($data['data']);
+    }
+
+    protected function parseArray(array $array): array
+    {
+        foreach ($array as $key => $value) {
+            if (is_null($value)) {
+                unset($array[$key]);
+                continue;
+            }
+            if ($value instanceof ValueObject) {
+                $array[$key] = $value;
+
+                continue;
+            }
+
+            if ($value instanceof DataTransferObject) {
+                $array[$key] = $value->toArray();
+
+                continue;
+            }
+
+            if (! is_array($value)) {
+                continue;
+            }
+
+            $array[$key] = $this->parseArray($value);
+        }
+
+        return $array;
     }
 }

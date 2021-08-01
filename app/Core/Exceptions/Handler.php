@@ -42,7 +42,9 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+            if ($this->shouldReport($e) && app()->bound('sentry')) {
+                app('sentry')->captureException($e);
+            }
         });
     }
 
@@ -54,6 +56,9 @@ class Handler extends ExceptionHandler
      */
     protected function prepareJsonResponse($request, \Exception | \Throwable $e): \Illuminate\Http\JsonResponse
     {
+        if (config('app.env') === 'local') {
+            return parent::prepareJsonResponse($request, $e);
+        }
         return response()->json([
             'errors' => [
                 [

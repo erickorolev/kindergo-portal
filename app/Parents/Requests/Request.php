@@ -35,7 +35,7 @@ abstract class Request extends \Illuminate\Foundation\Http\FormRequest
     {
         /** @var User $user */
         $user = $this->user();
-        return $user->can($permission);
+        return $user->hasPermissionTo($permission);
     }
 
     /**

@@ -18,4 +18,11 @@ abstract class Controller extends LaravelBaseController
     use ValidatesRequests;
     use HashIdTrait;
     use CallableTrait;
+
+    protected function getUrl(): string
+    {
+        /** @var string $url */
+        $url = config('app.url');
+        return $url;
+    }
 }

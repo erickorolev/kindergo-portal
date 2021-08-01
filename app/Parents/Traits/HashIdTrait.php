@@ -83,7 +83,7 @@ trait HashIdTrait
      * @param array|string $requestData
      * @param string $key
      *
-     * @return  array|null|string
+     * @return null|array|string
      */
     private function locateAndDecodeIds(array | string $requestData, string $key): array | null | string
     {
@@ -100,7 +100,8 @@ trait HashIdTrait
      *
      * @param string|array $data
      * @param array $keysTodo
-     * @return array|string|null
+     *
+     * @return null|array|string
      */
     private function processField(string | array $data, array $keysTodo): array | string | null
     {
@@ -194,11 +195,13 @@ trait HashIdTrait
     }
 
     /**
-     * @param  string | int | null    $id
+     * @param string | int | null    $id
      * @param ?string $parameter
      *
-     * @return array|string|null
+     * @return \null|array|string
+     *
      * @throws IncorrectIdException
+     *
      * @psalm-suppress MixedInferredReturnType
      */
     public function decode(string | int | null $id, ?string $parameter = null): array | string | null

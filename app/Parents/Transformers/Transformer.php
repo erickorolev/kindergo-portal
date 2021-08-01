@@ -33,7 +33,7 @@ class Transformer extends \League\Fractal\TransformerAbstract
         /** @var ?User $user */
         $user = $this->user();
 
-        if (!is_null($user) && $user->is_admin) {
+        if (!is_null($user) && $user->isSuperAdmin()) {
             return array_merge($clientResponse, $adminResponse);
         }
 

@@ -2,6 +2,10 @@
 
 namespace Database\Seeders;
 
+use Domains\Authorization\Seeders\PermissionsSeeder;
+use Domains\Children\Seeders\ChildSeeder;
+use Domains\Payments\Seeders\PaymentSeeder;
+use Domains\Users\Seeders\UserSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,8 +15,11 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        // \Domains\Users\Models\User::factory(10)->create();
+        $this->call(UserSeeder::class);
+        $this->call(PermissionsSeeder::class);
+        $this->call(ChildSeeder::class);
+        $this->call(PaymentSeeder::class);
     }
 }

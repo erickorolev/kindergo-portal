@@ -6,6 +6,13 @@
 
 require('./bootstrap');
 
+// @ts-ignore
+import Alpine from 'alpinejs';
+// @ts-ignore
+window.Alpine = Alpine;
+
+Alpine.start();
+
 import {createApp} from "vue";
 import ExampleComponent from "./components/ExampleComponent.vue";
 

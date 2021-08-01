@@ -2,6 +2,9 @@
 
 namespace App\Console;
 
+use Domains\Payments\Console\Commands\GetPaymentsFromVtigerCommand;
+use Domains\Trips\Console\Commands\GetTripsFromVtigerCommand;
+use Domains\Users\Console\Commands\GetUsersFromVtigerCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Parents\Commands\GetPortalVersionCommand;
@@ -23,6 +26,9 @@ class Kernel extends ConsoleKernel
         ListActionsCommand::class,
         ListTasksCommand::class,
         GetPortalVersionCommand::class,
+        GetUsersFromVtigerCommand::class,
+        GetTripsFromVtigerCommand::class,
+        GetPaymentsFromVtigerCommand::class,
     ];
 
     /**

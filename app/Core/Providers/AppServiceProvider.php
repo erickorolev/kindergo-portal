@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
      * @psalm-suppress MixedReturnStatement
      * @psalm-suppress MixedInferredReturnType
      */
-    public function boot()
+    public function boot(): void
     {
         Fractal::macro('respondJsonApi', function (
             int $statusCode = 200,

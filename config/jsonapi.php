@@ -4,12 +4,24 @@ use Spatie\QueryBuilder\AllowedFilter;
 
 return [
     'resources' => [
-        'questions' => [
+        'users' => [
             'domain' => 'Users',
             'relationships' => [
                 [
                     'type' => 'roles',
                     'method' => 'roles'
+                ],
+                [
+                    'type' => 'children',
+                    'method' => 'children'
+                ],
+                [
+                    'type' => 'timetables',
+                    'method' => 'timetables'
+                ],
+                [
+                    'type' => 'payments',
+                    'method' => 'payments'
                 ]
             ],
             'allowedSorts' => [
@@ -17,118 +29,98 @@ return [
                 'email'
             ],
             'allowedFilters' => [
-                AllowedFilter::exact('confirmed')
+
             ]
         ],
-        'listing_categories' => [
-            'domain' => 'Listings',
+        'children' => [
+            'domain' => 'Children',
             'relationships' => [
                 [
-                    'type' => 'listing_products',
-                    'method' => 'listingProducts'
-                ]
-            ],
-            'allowedSorts' => [
-                'id',
-                'name',
-                'parent',
-            ],
-            'allowedFilters' => [
-                'id',
-                'name',
-                'parent',
-            ]
-        ],
-        'listing_products' => [
-            'domain' => 'Listings',
-            'relationships' => [
-                [
-                    'type' => 'listing_categories',
-                    'method' => 'listingCategory'
-                ]
-            ],
-            'allowedSorts' => [
-                'id',
-                'listing_category.name',
-                'code',
-                'part_no',
-                'usage_unit',
-                'show_on_website',
-                'name',
-                'weight_code',
-            ],
-            'allowedFilters' => [
-                'id',
-                'listing_category.name',
-                'code',
-                'part_no',
-                'usage_unit',
-                'name',
-                'weight_code',
-            ]
-        ],
-        'cities' => [
-            'domain' => 'Storages',
-            'relationships' => [
-                [
-                    'type' => 'cities',
-                    'method' => 'city'
-                ]
-            ],
-            'allowedSorts' => [
-                'id',
-                'name',
-                'code',
-            ],
-            'allowedFilters' => [
-                'id',
-                'name',
-                'code',
-            ]
-        ],
-        'locations' => [
-            'domain' => 'Storages',
-            'relationships' => [
-                [
-                    'type' => 'cities',
-                    'method' => 'city'
-                ]
-            ],
-            'allowedSorts' => [
-                'id',
-                'address',
-                'city.name',
-            ],
-            'allowedFilters' => [
-                'id',
-                'address',
-                'city.name',
-            ]
-        ],
-        'cell_types' => [
-            'domain' => 'Storages',
-            'relationships' => [
-            ],
-            'allowedSorts' => [
-                'id',
-                'name',
-            ],
-            'allowedFilters' => [
-                'id',
-                'name',
-            ]
-        ],
-        'cells' => [
-            'domain' => 'Storages',
-            'relationships' => [
-                [
-                    'type' => 'locations',
-                    'method' => 'location'
+                    'type' => 'users',
+                    'method' => 'users'
                 ],
                 [
-                    'type' => 'cell_types',
-                    'method' => 'cellType'
+                    'type' => 'timetables',
+                    'method' => 'timetables'
+                ],
+                [
+                    'type' => 'trips',
+                    'method' => 'trips'
                 ]
+            ],
+            'allowedSorts' => [
+                'updated_at'
+            ],
+            'allowedFilters' => [
+
+            ]
+        ],
+        'timetables' => [
+            'domain' => 'Timetables',
+            'relationships' => [
+                [
+                    'type' => 'user',
+                    'method' => 'user'
+                ],
+                [
+                    'type' => 'children',
+                    'method' => 'children'
+                ]
+            ],
+            'allowedSorts' => [
+                'updated_at'
+            ],
+            'allowedFilters' => [
+
+            ]
+        ],
+        'payments' => [
+            'domain' => 'Payments',
+            'relationships' => [
+                [
+                    'type' => 'users',
+                    'method' => 'user'
+                ]
+            ],
+            'allowedSorts' => [
+                'updated_at'
+            ],
+            'allowedFilters' => [
+
+            ]
+        ],
+        'trips' => [
+            'domain' => 'Trips',
+            'relationships' => [
+                [
+                    'type' => 'timetables',
+                    'method' => 'timetable'
+                ],
+                [
+                    'type' => 'children',
+                    'method' => 'children'
+                ]
+            ],
+            'allowedSorts' => [
+                'updated_at'
+            ],
+            'allowedFilters' => [
+
+            ]
+        ],
+        'attendants' => [
+            'domain' => 'Attendants',
+            'relationships' => [
+                [
+                    'type' => 'trips',
+                    'method' => 'trips'
+                ]
+            ],
+            'allowedSorts' => [
+                'updated_at'
+            ],
+            'allowedFilters' => [
+
             ]
         ]
     ]
