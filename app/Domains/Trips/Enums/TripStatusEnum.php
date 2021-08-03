@@ -13,4 +13,6 @@ final class TripStatusEnum extends \Parents\Enums\Enum implements \BenSampo\Enum
     public const COMPLETED = 'Completed';
 
     public const CANCELED = 'Canceled';
+
+    public const PENDING = 'Pending';
 }

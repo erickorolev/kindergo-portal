@@ -23,12 +23,14 @@ return [
     ],
     \Domains\Payments\Enums\TypePaymentEnum::class => [
         \Domains\Payments\Enums\TypePaymentEnum::BANK_PAYMENT => 'Банковская транзакция',
-        \Domains\Payments\Enums\TypePaymentEnum::ONLINE_PAYMENT => 'Онлайн платёж'
+        \Domains\Payments\Enums\TypePaymentEnum::ONLINE_PAYMENT => 'Онлайн платёж',
+        \Domains\Payments\Enums\TypePaymentEnum::NOT_SPECIFIED => 'Не указано'
     ],
     \Domains\Trips\Enums\TripStatusEnum::class => [
         \Domains\Trips\Enums\TripStatusEnum::APPOINTED => 'Назначено',
         \Domains\Trips\Enums\TripStatusEnum::PERFORMED => 'Выполняется',
         \Domains\Trips\Enums\TripStatusEnum::COMPLETED => 'Завершена',
-        \Domains\Trips\Enums\TripStatusEnum::CANCELED => 'Отменена'
+        \Domains\Trips\Enums\TripStatusEnum::CANCELED => 'Отменена',
+        \Domains\Trips\Enums\TripStatusEnum::PENDING => 'В ожидании',
     ]
 ];

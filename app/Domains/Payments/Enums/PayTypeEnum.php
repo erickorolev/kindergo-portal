@@ -9,4 +9,6 @@ final class PayTypeEnum extends \Parents\Enums\Enum implements \BenSampo\Enum\Co
     public const RECEIPT = 'Receipt';
 
     public const EXPENSE = 'Expense';
+
+    public const NOT_SPECIFIED = 'Not specified';
 }

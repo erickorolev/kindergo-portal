@@ -9,4 +9,6 @@ final class TypePaymentEnum extends \Parents\Enums\Enum implements \BenSampo\Enu
     public const ONLINE_PAYMENT = 'Online payment';
 
     public const BANK_PAYMENT = 'Bank payment';
+
+    public const NOT_SPECIFIED = 'Not specified';
 }
