@@ -14,6 +14,7 @@ use Parents\Requests\Request;
 use Parents\ValueObjects\CrmIdValueObject;
 use Parents\ValueObjects\MoneyValueObject;
 use Parents\ValueObjects\TimeValueObject;
+use Parents\ValueObjects\UrlValueObject;
 use Support\Helpers\ImageHelper;
 
 final class TripData extends ObjectData
@@ -137,7 +138,8 @@ final class TripData extends ObjectData
             'cf_timetable_id' => CrmIdValueObject::fromNative($data->get('cf_timetable_id')),
             'assigned_user_id' => CrmIdValueObject::fromNative($data->get('assigned_user_id')),
             'children' => $children->toArray(),
-            'external_files' => ImageHelper::convertToUrlValues($data->get('external_file', [])),
+            'external_file' => UrlValueObject::fromNative(null),
+            'documents' => ImageHelper::convertDocumentsToValueObject($data->get('images', []))
         ]);
     }
 }

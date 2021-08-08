@@ -7,6 +7,7 @@ namespace Domains\Users\Tests\Feature;
 use Domains\Authorization\Seeders\PermissionsSeeder;
 use Domains\Children\Models\Child;
 use Domains\TemporaryFile\Actions\UploadFileAction;
+use Domains\Users\Actions\GetUserByEmailAction;
 use Domains\Users\Enums\AttendantCategoryEnum;
 use Domains\Users\Enums\AttendantStatusEnum;
 use Domains\Users\Http\Controllers\Api\UserApiController;
@@ -16,12 +17,14 @@ use Domains\Users\Http\Requests\Api\UserStoreApiRequest;
 use Domains\Users\Http\Requests\Api\UserUpdateApiRequest;
 use Domains\Users\Jobs\SendUserToVtigerJob;
 use Domains\Users\Models\User;
+use Domains\Users\Notifications\PasswordSendNotification;
 use Domains\Users\Repositories\Eloquent\UserRepository;
 use Domains\Users\Repositories\UserRepositoryInterface;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
 use JMac\Testing\Traits\AdditionalAssertions;
 use Laravel\Sanctum\Sanctum;
@@ -125,6 +128,9 @@ class UserApiTest extends TestCase
     {
         Bus::fake();
 
+        Notification::fake();
+        Notification::assertNothingSent();
+
         $data = User::factory()
             ->make()
             ->toArray();
@@ -166,6 +172,10 @@ class UserApiTest extends TestCase
             $this->assertTrue(false, $ex->getMessage());
         }
         Bus::assertDispatched(SendUserToVtigerJob::class);
+        Notification::assertSentTo(
+            [GetUserByEmailAction::run($data['email'])],
+            PasswordSendNotification::class
+        );
     }
 
     /**

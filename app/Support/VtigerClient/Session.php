@@ -287,7 +287,7 @@ class Session
             $error = $jsonResult[ 'error' ];
             throw new WSException(
                 $error[ 'message' ],
-                $error[ 'code' ]
+                (int) $error[ 'code' ]
             );
         }
 

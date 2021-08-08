@@ -16,16 +16,20 @@ final class UpdateUserAction extends \Parents\Actions\Action
      * @param  UserData  $userData
      * @param  bool  $dispatchUpdate
      * @return User
-     * @method static User run(UserData $userData, bool $dispatchUpdate = true)
+     * @method static User run(UserData $userData, bool $dispatchUpdate = true, bool $updatePass = true)
      */
-    public function handle(UserData $userData, bool $dispatchUpdate = true): User
+    public function handle(UserData $userData, bool $dispatchUpdate = true, bool $updatePass = true): User
     {
         $id = $userData->id;
         if (is_null($id)) {
             throw new NotFoundException('Not ID in User object!');
         }
         $user = GetUserByIdAction::run($id);
-        $user->update($userData->toArray());
+        $userArr = $userData->toArray();
+        if (!$updatePass) {
+            unset($userArr['password']);
+        }
+        $user->update($userArr);
         $user->syncRoles($userData->roles);
         UpdateImagesTask::run($user, $userData);
         if ($dispatchUpdate) {

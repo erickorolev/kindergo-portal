@@ -14,4 +14,6 @@ interface ChildRepositoryInterface
     public function jsonPaginate(): LengthAwarePaginator;
 
     public function findJson(int $id): Model;
+
+    public function all($columns = ['*']);
 }

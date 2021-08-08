@@ -11,6 +11,7 @@ use Domains\Users\Models\User;
 use Illuminate\Support\Collection;
 use Parents\DataTransferObjects\ObjectData;
 use Parents\Models\Model;
+use Parents\ValueObjects\UrlValueObject;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -54,6 +55,11 @@ final class UpdateImagesTask extends \Parents\Tasks\Task
             }
         }
 
+        $docs = $user->getMedia('documents');
+        foreach ($docs as $doc) {
+            $doc->delete();
+        }
+
         if (property_exists($userData, 'avatar_path') && $userData->avatar_path) {
             $user->addMedia($userData->avatar_path)
                 ->toMediaCollection($collection);
@@ -83,6 +89,14 @@ final class UpdateImagesTask extends \Parents\Tasks\Task
                 $user->addMediaFromUrl($external_file->toNative())->toMediaCollection($collection);
             }
         }
+
+        if (!empty($userData->documents)) {
+            /** @var UrlValueObject $document */
+            foreach ($userData->documents as $document) {
+                $user->addMediaFromUrl($document->toNative())->toMediaCollection('documents');
+            }
+        }
+
         return $user;
     }
 }

@@ -317,6 +317,21 @@ final class User extends Authenticatable implements HasMedia
             $data['avatar'],
             $data['avatar_path'],
         );
+        $avatar = $this->avatar;
+        if ($avatar) {
+            $filename = $avatar->file_name;
+            if ($filename == 'avatar.php') {
+                $filename = 'avatar.png';
+            }
+            $data['attachments'] = array(
+                'imagename' => [
+                    'name' => $filename,
+                    'type' => $avatar->mime_type,
+                    'size' => $avatar->size,
+                    'content' => base64_encode(file_get_contents($avatar->getPath()))
+                ]
+            );
+        }
         return $data;
     }
 }

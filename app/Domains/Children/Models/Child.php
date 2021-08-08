@@ -160,6 +160,21 @@ final class Child extends Model implements HasMedia
             $data['updated_at'],
             $data['imagename'],
         );
+        $avatar = $this->avatar;
+        if ($avatar) {
+            $filename = $avatar->file_name;
+            if ($filename == 'avatar.php') {
+                $filename = 'avatar.png';
+            }
+            $data['attachments'] = array(
+                'imagename' => [
+                    'name' => $filename,
+                    'type' => $avatar->mime_type,
+                    'size' => $avatar->size,
+                    'content' => base64_encode(file_get_contents($avatar->getPath()))
+                ]
+            );
+        }
         return $data;
     }
 

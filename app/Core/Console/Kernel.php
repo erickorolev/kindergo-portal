@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use Domains\Children\Console\Commands\GetChildrenFromVtigerCommand;
 use Domains\Payments\Console\Commands\GetPaymentsFromVtigerCommand;
 use Domains\Trips\Console\Commands\GetTripsFromVtigerCommand;
 use Domains\Users\Console\Commands\GetUsersFromVtigerCommand;
@@ -26,6 +27,7 @@ class Kernel extends ConsoleKernel
         ListActionsCommand::class,
         ListTasksCommand::class,
         GetPortalVersionCommand::class,
+        GetChildrenFromVtigerCommand::class,
         GetUsersFromVtigerCommand::class,
         GetTripsFromVtigerCommand::class,
         GetPaymentsFromVtigerCommand::class,
@@ -37,9 +39,12 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
-    protected function schedule(Schedule $schedule)
+    protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('users:receive')->hourly();
+        $schedule->command('children:receive')->hourly();
+        $schedule->command('payments:receive')->hourly();
+        $schedule->command('trips:receive')->hourly();
     }
 
     /**
@@ -47,7 +52,7 @@ class Kernel extends ConsoleKernel
      *
      * @return void
      */
-    protected function commands()
+    protected function commands(): void
     {
         $this->load(__DIR__ . '/Commands');
 

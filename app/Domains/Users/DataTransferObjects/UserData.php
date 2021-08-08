@@ -17,6 +17,7 @@ use Parents\ValueObjects\CrmIdValueObject;
 use Parents\ValueObjects\PhoneNumberValueObject;
 use Parents\ValueObjects\UrlValueObject;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Support\Helpers\ImageHelper;
 
 final class UserData extends ObjectData
 {
@@ -95,6 +96,8 @@ final class UserData extends ObjectData
     public CrmIdValueObject $crmid;
 
     public CrmIdValueObject $assigned_user_id;
+
+    public array $documents = [];
 
     public Carbon $created_at;
 
@@ -216,7 +219,8 @@ final class UserData extends ObjectData
             'crmid' => CrmIdValueObject::fromNative($data->get('id')),
             'assigned_user_id' => CrmIdValueObject::fromNative($data->get('assigned_user_id')),
             'roles' => [],
-            'external_file' => UrlValueObject::fromNative($data->get('external_file')),
+            'external_file' => ImageHelper::getValueObjectFromArray($data->get('avatar', [])),
+            'documents' => ImageHelper::convertDocumentsToValueObject($data->get('images', []))
         ]);
     }
 }

@@ -29,7 +29,7 @@ final class GetTripsFromVtigerCommand extends Command
             try {
                 $tripData = TripData::fromConnector($trip);
                 /** @var ?Trip $existingTrip */
-                $existingTrip = GetTripByCrmIdAction::run($tripData->crmid->toNative());
+                $existingTrip = GetTripByCrmIdAction::run($tripData->crmid);
                 if ($existingTrip) {
                     $tripData->id = $existingTrip->id;
                     UpdateTripAction::run($tripData);

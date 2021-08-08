@@ -56,14 +56,11 @@ final class ChildConnector extends \Parents\Services\ConnectorService
             $child->save();
             return collect($result);
         }
-        $contactData = $this->client->entities->findOneByID('Contacts', (string) $child->crmid->toInt());
-        if (!$contactData) {
-            throw new \DomainException('No data received from Vtiger while updating Children ' . $child->id);
-        }
-        $result = $this->client->entities->updateOne(
+
+        $result = $this->client->entities?->updateOne(
             'Contacts',
             (string) $child->crmid->toInt(),
-            $this->getUpdatedArray($contactData, $child)
+            $child->toCrmArray()
         );
         return collect($result);
     }

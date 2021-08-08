@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Parents\Services;
 
+use Illuminate\Support\Collection;
 use Support\VtigerClient\WSClient;
 
 abstract class ConnectorService
@@ -13,5 +14,11 @@ abstract class ConnectorService
     public function __construct()
     {
         $this->client = WSClient::getCleanInstance();
+    }
+
+    public function receiveById(string $module, int $crmid): Collection
+    {
+        $result = $this->client->entities->findOneByID($module, (string) $crmid);
+        return collect($result);
     }
 }

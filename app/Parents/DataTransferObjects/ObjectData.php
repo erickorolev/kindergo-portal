@@ -16,6 +16,8 @@ abstract class ObjectData extends \Spatie\DataTransferObject\DataTransferObject
 {
     use SanitizerTrait;
 
+    public array $documents = [];
+
     protected static string $attribute_prefix = 'data.attributes.';
 
     public static function generateCarbonObject(?string $date): Carbon | false | null

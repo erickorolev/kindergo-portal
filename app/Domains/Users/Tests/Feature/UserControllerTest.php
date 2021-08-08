@@ -3,11 +3,14 @@
 namespace Domains\Users\Tests\Feature;
 
 use Domains\Authorization\Seeders\PermissionsSeeder;
+use Domains\Users\Actions\GetUserByEmailAction;
 use Domains\Users\Enums\AttendantCategoryEnum;
 use Domains\Users\Enums\AttendantStatusEnum;
 use Domains\Users\Jobs\SendUserToVtigerJob;
 use Domains\Users\Models\User;
+use Domains\Users\Notifications\PasswordSendNotification;
 use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Notification;
 use Parents\Enums\GenderEnum;
 use Parents\Tests\PhpUnit\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -69,6 +72,9 @@ class UserControllerTest extends TestCase
     {
         Bus::fake();
 
+        Notification::fake();
+        Notification::assertNothingSent();
+
         $data = User::factory()
             ->make()
             ->toArray();
@@ -97,6 +103,11 @@ class UserControllerTest extends TestCase
 
         $this->assertDatabaseHas('users', $data);
         Bus::assertDispatched(SendUserToVtigerJob::class);
+
+        Notification::assertSentTo(
+            [GetUserByEmailAction::run($data['email'])],
+            PasswordSendNotification::class
+        );
     }
 
     /**

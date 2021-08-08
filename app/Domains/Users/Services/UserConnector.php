@@ -54,15 +54,13 @@ final class UserConnector extends \Parents\Services\ConnectorService
             $user->save();
             return collect($result);
         }
-        $contactData = $this->client->entities?->findOneByID('Contacts', (string) $user->crmid->toInt());
-        if (!$contactData) {
-            throw new \DomainException('No data received from Vtiger while updating User ' . $user->id);
-        }
+
         $result = $this->client->entities?->updateOne(
             'Contacts',
             (string) $user->crmid->toInt(),
-            $this->getUpdatedArray($contactData, $user)
+            $user->toCrmArray()
         );
+
         return collect($result);
     }
 

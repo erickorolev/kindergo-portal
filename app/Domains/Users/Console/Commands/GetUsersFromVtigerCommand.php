@@ -29,7 +29,7 @@ final class GetUsersFromVtigerCommand extends Command
                 $existingUser = GetUserByCrmidAction::run($userData->crmid->toNative());
                 if ($existingUser) {
                     $userData->id = $existingUser->id;
-                    UpdateUserAction::run($userData, false);
+                    UpdateUserAction::run($userData, false, false);
                 } else {
                     StoreUserAction::run($userData, false);
                 }

@@ -15,8 +15,10 @@ use Domains\Users\Actions\StoreUserAction;
 use Domains\Users\Actions\UpdateUserAction;
 use Domains\Users\DataTransferObjects\UserData;
 use Domains\Users\Models\User;
+use Domains\Users\Notifications\PasswordSendNotification;
 use Domains\Users\ValueObjects\PasswordValueObject;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Notification;
 use Parents\Tests\PhpUnit\TestCase;
 use Parents\ValueObjects\CrmIdValueObject;
 use Parents\ValueObjects\UrlValueObject;
@@ -84,6 +86,8 @@ class UserActionsTest extends TestCase
      */
     public function testStoreUserAction(): void
     {
+        Notification::fake();
+        Notification::assertNothingSent();
         /** @var Role $role */
         $role = Role::create(['name' => 'usus']);
         /** @var User $user */
@@ -100,6 +104,7 @@ class UserActionsTest extends TestCase
             'firstname' => $result->firstname
         ]);
         $this->assertTrue($result->hasRole('usus'));
+        Notification::assertSentTo([$result], PasswordSendNotification::class);
     }
 
     /**

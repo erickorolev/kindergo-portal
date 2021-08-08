@@ -12,6 +12,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Log;
+use Support\VtigerClient\WSException;
 
 final class SendUserToVtigerJob implements ShouldQueue
 {
@@ -27,13 +28,16 @@ final class SendUserToVtigerJob implements ShouldQueue
 
     public function handle(): void
     {
-        return;
         $connector = app(UserConnector::class);
 
         try {
             $connector->send($this->user);
         } catch (\DomainException | \InvalidArgumentException $e) {
             Log::error('Validation Error in updating data in Vtiger: ' . $e->getMessage());
+            app('sentry')->captureException($e);
+        } catch (WSException $e) {
+            Log::error('Vtiger did not accept update of user with id '
+                . $this->user->id . ': ' . $e->getMessage());
             app('sentry')->captureException($e);
         }
     }

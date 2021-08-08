@@ -140,7 +140,7 @@ final class WSClient
         $login = config('services.vtiger.login');
         /** @var string $key */
         $key = config('services.vtiger.key');
-        return new self($url, $login, $key);
+        return new self($url, $login, $key, self::USE_ACCESSKEY);
     }
 }
 

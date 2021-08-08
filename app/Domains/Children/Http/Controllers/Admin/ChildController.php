@@ -19,6 +19,7 @@ use Domains\Children\Http\Requests\Admin\ShowChildRequest;
 use Domains\Children\Http\Requests\Admin\EditChildRequest;
 use Domains\Children\Models\Child;
 use Domains\Users\Actions\GetAllUsersAction;
+use Domains\Users\Actions\GetUsersDropdownListAction;
 use Domains\Users\Actions\UpdateUserAction;
 use Domains\Users\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -41,7 +42,7 @@ final class ChildController extends Controller
     public function create(CreateChildRequest $request): \Illuminate\View\View|View|Application
     {
         /** @var User[] $users */
-        $users = GetAllUsersAction::run();
+        $users = GetUsersDropdownListAction::run();
 
         return view('app.children.create', [
             'users' => $users,
@@ -73,7 +74,7 @@ final class ChildController extends Controller
     public function edit(EditChildRequest $request, int $child): \Illuminate\View\View|View|Application
     {
         /** @var User[] $users */
-        $users = GetAllUsersAction::run();
+        $users = GetUsersDropdownListAction::run();
         /** @var Child $childModel */
         $childModel = GetChildByIdAction::run($child);
 

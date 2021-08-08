@@ -10,6 +10,7 @@ use Domains\Users\DataTransferObjects\UserData;
 use Domains\Users\Models\User;
 use Parents\DataTransferObjects\ObjectData;
 use Parents\Models\Model;
+use Parents\ValueObjects\UrlValueObject;
 use Spatie\MediaLibrary\HasMedia;
 
 final class AttachImagesTask extends \Parents\Tasks\Task
@@ -50,6 +51,12 @@ final class AttachImagesTask extends \Parents\Tasks\Task
         if (property_exists($userData, 'external_files') && $userData->external_files) {
             foreach ($userData->external_files as $external_file) {
                 $user->addMediaFromUrl($external_file->toNative())->toMediaCollection($collection);
+            }
+        }
+        if (!empty($userData->documents)) {
+            /** @var UrlValueObject $document */
+            foreach ($userData->documents as $document) {
+                $user->addMediaFromUrl($document->toNative())->toMediaCollection('documents');
             }
         }
         return $user;
