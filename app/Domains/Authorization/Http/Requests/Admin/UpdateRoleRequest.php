@@ -12,7 +12,7 @@ final class UpdateRoleRequest extends Request
     public function rules(): array
     {
         return [
-            'name' => 'required|max:32|unique:roles,name,' . $this->name,
+            'name' => 'required|max:32',
             'permissions' => 'array',
         ];
     }

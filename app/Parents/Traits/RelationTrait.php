@@ -25,12 +25,12 @@ trait RelationTrait
     public function relations(int $id, string $relation): JsonResponse
     {
         /** @var User $user */
-        $user = Auth::user();
+        /*$user = Auth::user();
         abort_if(
             $user->cant('list ' . $relation),
             Response::HTTP_FORBIDDEN,
             '403 Forbidden'
-        );
+        );*/
         /** @var User $parentModel */
         $parentModel = $this->relationClass::run($id);
         /** @var \Illuminate\Support\Collection $data */

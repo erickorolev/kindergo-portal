@@ -24,4 +24,6 @@ abstract class ValueObject extends CastableDataTransferObject
     abstract public function __toString(): string;
 
     abstract public function toNative(): mixed;
+
+    abstract public function isNull(): bool;
 }

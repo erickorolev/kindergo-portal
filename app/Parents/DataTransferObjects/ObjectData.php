@@ -61,7 +61,11 @@ abstract class ObjectData extends \Spatie\DataTransferObject\DataTransferObject
                 continue;
             }
             if ($value instanceof ValueObject) {
-                $array[$key] = $value;
+                if ($value->isNull()) {
+                    unset($array[$key]);
+                } else {
+                    $array[$key] = $value;
+                }
 
                 continue;
             }

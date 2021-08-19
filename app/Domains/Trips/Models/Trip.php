@@ -133,7 +133,7 @@ final class Trip extends Model implements HasMedia
 
     public function children(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Child::class);
+        return $this->belongsToMany(Child::class, 'child_trip');
     }
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

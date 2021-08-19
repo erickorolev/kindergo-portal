@@ -186,13 +186,13 @@ final class Child extends Model implements HasMedia
     protected static function booted(): void
     {
         /** @var ?User $authUser */
-        $authUser = Auth::user();
+/*        $authUser = Auth::user();
         if ($authUser?->hasExactRoles(['client'])) {
             static::addGlobalScope('users', function (Builder $builder) {
                 $builder->whereHas('users', function (Builder $q) {
                     $q->where('child_user.user_id', Auth::id());
                 });
             });
-        }
+        }*/
     }
 }

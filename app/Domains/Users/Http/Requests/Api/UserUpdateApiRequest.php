@@ -8,6 +8,7 @@ use BenSampo\Enum\Rules\EnumValue;
 use Domains\Users\Enums\AttendantCategoryEnum;
 use Domains\Users\Enums\AttendantGenderEnum;
 use Domains\Users\Enums\AttendantStatusEnum;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Parents\Enums\GenderEnum;
 use Parents\Requests\Request;
@@ -56,13 +57,13 @@ final class UserUpdateApiRequest extends Request
             'data.attributes.roles' => ['nullable', 'array'],
             'data.attributes.external_file' => ['nullable', 'url'],
             'data.attributes.crmid' => ['nullable', 'max:50', 'min:3'],
-            'data.attributes.assigned_user_id' => ['required', 'max:50', 'min:3'],
+            'data.attributes.assigned_user_id' => ['nullable', 'max:50', 'min:3'],
         ];
         return $this->mergeWithDefaultRules($rules);
     }
 
     public function authorize(): bool
     {
-        return $this->check('update users');
+        return Auth::id() == $this->user || $this->check('update users');
     }
 }
