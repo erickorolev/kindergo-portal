@@ -15,6 +15,7 @@ mix.ts("resources/js/app.ts", "public/js")
     .vue()
     .sass('resources/sass/app.scss', 'public/css')
     .postCss('resources/css/app.css', 'public/css', [
+        require('autoprefixer'),
         require('tailwindcss')
     ])
     .sourceMaps();

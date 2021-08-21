@@ -18,6 +18,9 @@ abstract class ConnectorService
 
     public function receiveById(string $module, int $crmid): Collection
     {
+        if (!$this->client->entities) {
+            return collect([]);
+        }
         $result = $this->client->entities->findOneByID($module, (string) $crmid);
         return collect($result);
     }

@@ -156,6 +156,16 @@ class TripApiTest extends TestCase
                     ]
                 ]
             );
+            $response->assertStatus(202)->assertJson([
+                'data' => [
+                    'type' => 'trips',
+                    'attributes' => [
+                        'name' => $data['name'],
+                        'where_address' => $data['where_address'],
+                        'childrens' => $data['childrens']
+                    ]
+                ]
+            ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
             dump($e->errors());
             $this->assertTrue(false, $e->getMessage());
@@ -164,17 +174,6 @@ class TripApiTest extends TestCase
         $data['attendant_income'] *= 100;
 
         $this->assertDatabaseHas('trips', $data);
-
-        $response->assertStatus(202)->assertJson([
-            'data' => [
-                'type' => 'trips',
-                'attributes' => [
-                    'name' => $data['name'],
-                    'where_address' => $data['where_address'],
-                    'childrens' => $data['childrens']
-                ]
-            ]
-        ]);
     }
 
     /**

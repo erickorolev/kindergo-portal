@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domains\Children\Repositories;
 
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Parents\Models\Model;
 
 interface ChildRepositoryInterface
@@ -15,5 +16,9 @@ interface ChildRepositoryInterface
 
     public function findJson(int $id): Model;
 
+    /**
+     * @param  string[]  $columns
+     * @return Collection
+     */
     public function all($columns = ['*']);
 }

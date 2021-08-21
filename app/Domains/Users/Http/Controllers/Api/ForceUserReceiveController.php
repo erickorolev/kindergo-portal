@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace Domains\Users\Http\Controllers\Api;
 
 use Domains\Users\Actions\ReceiveUserFromCrmAction;

@@ -15,9 +15,13 @@ Alpine.start();
 
 import {createApp} from "vue";
 import ExampleComponent from "./components/ExampleComponent.vue";
+import App from "./App.vue";
+import PasswordChangeComponent from "./components/PasswordChangeComponent.vue";
 
 createApp({
     components: {
         ExampleComponent,
+        PasswordChangeComponent,
+        App
     }
 }).mount('#app')

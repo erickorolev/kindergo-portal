@@ -308,6 +308,7 @@ class UserApiTest extends TestCase
 
     public function testImagesAdding(): void
     {
+        Bus::fake();
         $file = UploadedFile::fake()->create('test.pdf', 100, 'application/pdf');
         $result = UploadFileAction::run($file);
         $this->assertFileExists(storage_path('app/public/uploads/tmp/' . $result . '/test.pdf'));
@@ -350,6 +351,7 @@ class UserApiTest extends TestCase
             'collection_name' => 'avatar',
             'model_type' => 'Domains\Users\Models\User'
         ]);
+        Bus::assertDispatched(SendUserToVtigerJob::class);
     }
 
     public function testChildrenIncludeInUser(): void

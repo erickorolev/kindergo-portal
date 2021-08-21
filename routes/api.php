@@ -17,19 +17,27 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/v1/login', [AuthController::class, 'login'])->name('api.login');
 
-Route::prefix('/v1/force')->group(function(){
-    Route::get('Client/{id}',
-        \Domains\Users\Http\Controllers\Api\ForceUserReceiveController::class);
+Route::prefix('/v1/force')->group(function () {
+    Route::get(
+        'Client/{id}',
+        \Domains\Users\Http\Controllers\Api\ForceUserReceiveController::class
+    );
     Route::get('Attendant/{id}', function () {
         return null;
     });
-    Route::get('Child/{id}',
-        \Domains\Children\Http\Controllers\Api\ForceChildReceiveController::class);
-    Route::get('payments/{id}',
-        \Domains\Payments\Http\Controllers\Api\ForcePaymentReceiveController::class);
+    Route::get(
+        'Child/{id}',
+        \Domains\Children\Http\Controllers\Api\ForceChildReceiveController::class
+    );
+    Route::get(
+        'payments/{id}',
+        \Domains\Payments\Http\Controllers\Api\ForcePaymentReceiveController::class
+    );
     Route::get('timetables/{id}', function () {
         return null;
     });
-    Route::get('trips/{id}',
-        \Domains\Trips\Http\Controllers\Api\ForceTripReceiveController::class);
+    Route::get(
+        'trips/{id}',
+        \Domains\Trips\Http\Controllers\Api\ForceTripReceiveController::class
+    );
 });

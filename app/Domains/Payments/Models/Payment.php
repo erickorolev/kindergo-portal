@@ -105,7 +105,7 @@ final class Payment extends Model
         $data['crmid'] = $this->crmid?->toNative();
         $data['assigned_user_id'] = $this->assigned_user_id?->toNative();
         $data['pay_type'] = $this->pay_type->value;
-        $data['attendanta_signature'] = $this->attendanta_signature->value;
+        $data['attendanta_signature'] = $this->attendanta_signature?->value;
         $data['spstatus'] = $this->spstatus->value;
         return $data;
     }

@@ -93,21 +93,20 @@ class PaymentApiTest extends TestCase
                     'attributes' => $data
                 ]
             ]);
+            $response->assertStatus(201)->assertJson([
+                'data' => [
+                    'type' => 'payments',
+                    'attributes' => [
+
+                    ]
+                ]
+            ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
             dump($e->errors());
             $this->assertTrue(false, $e->getMessage());
         }
         $data['amount'] = $data['amount'] * 100;
         $this->assertDatabaseHas('payments', $data);
-
-        $response->assertStatus(201)->assertJson([
-            'data' => [
-                'type' => 'payments',
-                'attributes' => [
-
-                ]
-            ]
-        ]);
     }
 
     /**
