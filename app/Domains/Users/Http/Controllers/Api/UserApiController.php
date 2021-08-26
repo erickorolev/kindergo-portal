@@ -23,6 +23,8 @@ use Parents\Controllers\Controller;
 use Parents\Serializers\JsonApiSerializer;
 use Parents\Traits\RelationTrait;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
+use Domains\Users\Actions\Fortify\UpdateUserPassword;
 
 final class UserApiController extends Controller
 {
@@ -32,6 +34,27 @@ final class UserApiController extends Controller
      * @psalm-param class-string $relationClass
      */
     protected string $relationClass = GetUserByIdAction::class;
+    /**
+     * @param  Request  $request
+     * @param  UpdateUserPassword  $action
+     * @return \Illuminate\Http\JsonResponse
+     * @psalm-suppress PossiblyNullArgument
+     */
+    public function password(Request $request, UpdateUserPassword $action): \Illuminate\Http\JsonResponse
+    {
+        /** @var User|null $user */
+        $user = Auth::user();
+        if (!$user) {
+            abort(403);
+        }
+        $action->update($user, $request->all());
+        return fractal(
+            $user,
+            new UserTransformer(),
+            new JsonApiSerializer($this->getUrl())
+        )->withResourceName(User::RESOURCE_NAME)
+            ->respondJsonApi();
+    }
 
     public function me(): \Illuminate\Http\JsonResponse
     {

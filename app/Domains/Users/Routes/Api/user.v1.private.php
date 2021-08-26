@@ -19,4 +19,8 @@ Route::post('users/{id}/{relation}/{parent}', [
     UserApiController::class,
     'me'
 ])->name('users.me');
+Route::post('users/password', [
+    UserApiController::class,
+    'password'
+])->name('users.password');
 Route::apiResource('users', UserApiController::class);

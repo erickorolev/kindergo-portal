@@ -6,7 +6,6 @@ namespace Domains\Users\Http\Requests\Api;
 
 use BenSampo\Enum\Rules\EnumValue;
 use Domains\Users\Enums\AttendantCategoryEnum;
-use Domains\Users\Enums\AttendantGenderEnum;
 use Domains\Users\Enums\AttendantStatusEnum;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -64,6 +63,9 @@ final class UserUpdateApiRequest extends Request
 
     public function authorize(): bool
     {
+        if (Auth::id() == $this->user) {
+            return true;
+        }
         return Auth::id() == $this->user || $this->check('update users');
     }
 }

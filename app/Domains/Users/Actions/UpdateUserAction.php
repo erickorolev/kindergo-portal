@@ -29,10 +29,18 @@ final class UpdateUserAction extends \Parents\Actions\Action
         if (!$updatePass) {
             unset($userArr['password']);
         }
-        $user->update($userArr);
-        if (!empty($userData->roles)) {
-            $user->syncRoles($userData->roles);
+        if (!$userArr['crmid'] || $userArr['crmid']->isNull()) {
+            unset($userArr['crmid']);
         }
+        if (!$userArr['assigned_user_id'] || $userArr['assigned_user_id']->isNull()) {
+            unset($userArr['assigned_user_id']);
+        }
+        $user->update($userArr);
+        $roles = $user->roles;
+        if (!empty($userData->roles)) {
+            $roles = $userData->roles;
+        }
+        $user->syncRoles($roles);
         UpdateImagesTask::run($user, $userData);
         if ($dispatchUpdate) {
             SendUserToVtigerJob::dispatch($user);
