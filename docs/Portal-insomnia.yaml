@@ -1,7 +1,7 @@
 _type: export
 __export_format: 4
-__export_date: 2021-08-19T12:47:28.445Z
-__export_source: insomnia.desktop.app:v2021.4.0
+__export_date: 2021-08-30T20:25:37.509Z
+__export_source: insomnia.desktop.app:v2021.5.0
 resources:
   - _id: req_38b1254a3e954a6987bd71b42df75af5
     parentId: fld_751f58a5cf7b42e99de2afd8891fcec6
@@ -52,6 +52,62 @@ resources:
     description: ""
     scope: collection
     _type: workspace
+  - _id: req_8aaa0371033242479319a09550fe78ee
+    parentId: fld_8fc157fca6eb4abaa2bf00719d5616ec
+    modified: 1630353983672
+    created: 1630353618990
+    url: "{{ _.BASE_URL }}/payments/5"
+    name: Edit payment
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "data": {
+            "type": "payments",
+            "id": "5",
+            "attributes": {
+              "pay_date": "2021-08-02",
+              "amount": 732872,
+              "pay_type": "Receipt",
+              "attendanta_signature": "Signed by",
+              "dispute_reason": "Something wrong",
+              "spstatus": "Delayed"
+            }
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/vnd.api+json
+        id: pair_9a3699259113436a9a758fdc25054ce6
+      - id: pair_01fa89c0fa4a4614addc925e528752d9
+        name: Accept
+        value: application/vnd.api+json
+        description: ""
+    authentication:
+      type: bearer
+      token: "{{ _.RESTRICTED_TOKEN }}"
+    metaSortKey: -1630353618990
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_8fc157fca6eb4abaa2bf00719d5616ec
+    parentId: wrk_ff565366b1af4680bda99caa3453bd18
+    modified: 1629375173567
+    created: 1629375173567
+    name: Payments
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1629375173567
+    _type: request_group
   - _id: req_231b4075d40b456798fdbfce9d4dd59a
     parentId: fld_8fc157fca6eb4abaa2bf00719d5616ec
     modified: 1629375211209
@@ -83,16 +139,6 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: fld_8fc157fca6eb4abaa2bf00719d5616ec
-    parentId: wrk_ff565366b1af4680bda99caa3453bd18
-    modified: 1629375173567
-    created: 1629375173567
-    name: Payments
-    description: ""
-    environment: {}
-    environmentPropertyOrder: null
-    metaSortKey: -1629375173567
-    _type: request_group
   - _id: req_b734baea7d31416db8edaf4c3a34f7e6
     parentId: fld_8fc157fca6eb4abaa2bf00719d5616ec
     modified: 1629375248632
@@ -124,6 +170,70 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_160c13c771ac4b2ea15e7097ced65648
+    parentId: fld_2ba587c678684c22b3b36c3023a6573f
+    modified: 1630354833968
+    created: 1630354533123
+    url: "{{ _.BASE_URL }}/trips/2"
+    name: Edit Trip
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "data": {
+            "type": "trips",
+            "id": "2",
+            "attributes": {
+              "name": "second test",
+              "where_address": "where second",
+              "date": "2016-08-01",
+              "time": "15:18:18",
+              "childrens": 3,
+              "duration": 5,
+              "distance": 15,
+              "status": "Appointed",
+              "scheduled_wait_where": 12,
+              "scheduled_wait_from": 15,
+              "not_scheduled_wait_where": 12,
+              "not_scheduled_wait_from": 15,
+              "parking_cost": 111222,
+              "attendant_income": 333444
+            }
+          }
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/vnd.api+json
+        id: pair_a57e717469744ee6bbc94cc40981385d
+      - id: pair_589c506b5e7c436d9abd43ca8171d1a7
+        name: Accept
+        value: application/vnd.api+json
+        description: ""
+    authentication:
+      type: bearer
+      token: "{{ _.RESTRICTED_TOKEN }}"
+    metaSortKey: -1630354533123
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_2ba587c678684c22b3b36c3023a6573f
+    parentId: wrk_ff565366b1af4680bda99caa3453bd18
+    modified: 1629374870200
+    created: 1629374870200
+    name: Trips
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1629374870200
+    _type: request_group
   - _id: req_89e739b837c6422a9ec3ca6575184603
     parentId: fld_2ba587c678684c22b3b36c3023a6573f
     modified: 1629374912804
@@ -155,16 +265,6 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: fld_2ba587c678684c22b3b36c3023a6573f
-    parentId: wrk_ff565366b1af4680bda99caa3453bd18
-    modified: 1629374870200
-    created: 1629374870200
-    name: Trips
-    description: ""
-    environment: {}
-    environmentPropertyOrder: null
-    metaSortKey: -1629374870200
-    _type: request_group
   - _id: req_306e726c43df41c9a3d738dc94b60591
     parentId: fld_2ba587c678684c22b3b36c3023a6573f
     modified: 1629375139664

@@ -32,7 +32,8 @@ final class UpdateUserAction extends \Parents\Actions\Action
         if (isset($userArr['crmid']) && (!$userArr['crmid'] || $userArr['crmid']->isNull())) {
             unset($userArr['crmid']);
         }
-        if (isset($userArr['assigned_user_id']) &&
+        if (
+            isset($userArr['assigned_user_id']) &&
             (!$userArr['assigned_user_id'] || $userArr['assigned_user_id']->isNull())
         ) {
             unset($userArr['assigned_user_id']);

@@ -24,7 +24,7 @@ final class PaymentUpdateApiRequest extends Request
                 'required',
                 new EnumValue(SpStatusEnum::class),
             ],
-            'data.attributes.user_id' => ['required'],
+            'data.attributes.user_id' => ['nullable'],
             'data.attributes.crmid' => ['nullable', 'max:50'],
             'data.attributes.dispute_reason' => ['nullable', 'max:1000'],
             'data.attributes.assigned_user_id' => ['nullable', 'max:50', 'min:3'],
