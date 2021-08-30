@@ -29,10 +29,12 @@ final class UpdateUserAction extends \Parents\Actions\Action
         if (!$updatePass) {
             unset($userArr['password']);
         }
-        if (!$userArr['crmid'] || $userArr['crmid']->isNull()) {
+        if (isset($userArr['crmid']) && (!$userArr['crmid'] || $userArr['crmid']->isNull())) {
             unset($userArr['crmid']);
         }
-        if (!$userArr['assigned_user_id'] || $userArr['assigned_user_id']->isNull()) {
+        if (isset($userArr['assigned_user_id']) &&
+            (!$userArr['assigned_user_id'] || $userArr['assigned_user_id']->isNull())
+        ) {
             unset($userArr['assigned_user_id']);
         }
         $user->update($userArr);
