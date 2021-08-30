@@ -32,6 +32,8 @@ final class TripStoreApiRequest extends Request
             'data.attributes.parking_cost' => ['nullable', 'numeric'],
             'data.attributes.attendant_income' => ['nullable', 'numeric'],
             'data.attributes.crmid' => ['nullable', 'max:50', 'min:3'],
+            'data.attributes.description' => ['nullable', 'string', 'max:1000'],
+            'data.attributes.parking_info' => ['nullable', 'string', 'max:1000'],
             'data.attributes.cf_timetable_id' => ['required', 'max:50', 'min:3'],
             'data.attributes.assigned_user_id' => ['nullable', 'max:50', 'min:3'],
         ];

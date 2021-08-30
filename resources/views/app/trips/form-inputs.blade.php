@@ -137,6 +137,20 @@
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
+        <x-inputs.textarea name="description" label="Description" maxlength="255"
+        >{{ old('description', ($editing ? $trip->description : ''))
+            }}</x-inputs.textarea
+        >
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.textarea name="parking_info" label="Parking Info" maxlength="255"
+        >{{ old('parking_info', ($editing ? $trip->parking_info : ''))
+            }}</x-inputs.textarea
+        >
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
         <x-inputs.select name="user_id" label="User" required>
             @php $selected = old('user_id', ($editing ? $trip->user_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the User</option>

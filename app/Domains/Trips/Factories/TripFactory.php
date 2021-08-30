@@ -50,6 +50,8 @@ final class TripFactory extends Factory
                 $this->faker->randomNumber(2) . 'x' . $this->faker->randomNumber(3)
             ),
             'assigned_user_id' => CrmIdValueObject::fromNative('19x1'),
+            'description' => $this->faker->text(),
+            'parking_info' => $this->faker->text(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

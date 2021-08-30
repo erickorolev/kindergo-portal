@@ -31,6 +31,8 @@ final class TripUpdateRequest extends Request
             'not_scheduled_wait_from' => ['nullable', 'numeric'],
             'parking_cost' => ['required', 'numeric'],
             'attendant_income' => ['nullable', 'numeric'],
+            'description' => ['nullable', 'string'],
+            'parking_info' => ['nullable', 'string'],
             'crmid' => ['nullable', 'max:50', 'min:3'],
             'assigned_user_id' => ['nullable', 'max:50', 'min:3'],
             'document' => 'nullable',

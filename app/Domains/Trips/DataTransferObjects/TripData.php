@@ -43,6 +43,10 @@ final class TripData extends ObjectData
 
     public int $scheduled_wait_from;
 
+    public ?string $description;
+
+    public ?string $parking_info;
+
     public ?int $not_scheduled_wait_where;
 
     public ?int $not_scheduled_wait_from;
@@ -80,6 +84,8 @@ final class TripData extends ObjectData
             'updated_at' => now(),
             'name' => $request->input($prefix . 'name'),
             'where_address' => $request->input($prefix . 'where_address'),
+            'description' => $request->input($prefix . 'description'),
+            'parking_info' => $request->input($prefix . 'parking_info'),
             'date' => Carbon::createFromFormat('Y-m-d', $request->input($prefix . 'date')),
             'time' => TimeValueObject::fromNative($request->input($prefix . 'time')),
             'childrens' => (int) $request->input($prefix . 'childrens'),
@@ -118,6 +124,8 @@ final class TripData extends ObjectData
             'updated_at' => now(),
             'name' => $data->get('name'),
             'where_address' => $data->get('where_address'),
+            'description' => $data->get('description'),
+            'parking_info' => $data->get('parking_info'),
             'date' => Carbon::createFromFormat('Y-m-d', $data->get('date')),
             'time' => TimeValueObject::fromNative($data->get('time')),
             'childrens' => (int) $data->get('childrens'),

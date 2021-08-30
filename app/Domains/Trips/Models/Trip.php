@@ -25,6 +25,8 @@ use Units\Filterings\Scopes\Searchable;
  * @property int $id
  * @property string $name Откуда
  * @property string $where_address Куда
+ * @property string $description Описание
+ * @property string $parking_info Информация о парковке
  * @property \Illuminate\Support\Carbon $date Дата отправления
  * @property \Parents\ValueObjects\TimeValueObject|null $time Время отправления
  * @property int $childrens Количество детей
@@ -101,6 +103,8 @@ final class Trip extends Model implements HasMedia
         'crmid',
         'assigned_user_id',
         'cf_timetable_id',
+        'description',
+        'parking_info'
     ];
 
     protected array $searchableFields = ['*'];

@@ -38,6 +38,8 @@ final class TripTransformer extends Transformer
             'childrens' => $model->childrens,
             'duration' => $model->duration,
             'distance' => $model->distance,
+            'description' => $model->description,
+            'parking_info' => $model->parking_info,
             'status' => $model->status->toArray(),
             'scheduled_wait_where' => $model->scheduled_wait_where,
             'scheduled_wait_from' => $model->scheduled_wait_from,
