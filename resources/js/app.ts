@@ -6,6 +6,13 @@
 
  require('./bootstrap');
 
+ // @ts-ignore
+import Alpine from 'alpinejs';
+// @ts-ignore
+window.Alpine = Alpine;
+
+Alpine.start();
+
  import 'bootstrap';
  import '../css/style.css';
  import '../sass/modal.scss';
