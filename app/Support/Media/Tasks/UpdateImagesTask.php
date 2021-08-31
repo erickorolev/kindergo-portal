@@ -34,13 +34,13 @@ final class UpdateImagesTask extends \Parents\Tasks\Task
         ) {
             return $user;
         }
-        if (
+/*        if (
             property_exists($userData, 'documents') && !$userData->documents &&
             property_exists($userData, 'external_files') && !$userData->external_files &&
             property_exists($userData, 'files') && !$userData->files
         ) {
             return $user;
-        }
+        }*/
 
         /** @var Media|Collection|null $avatar */
         $avatar = $user->$collection;

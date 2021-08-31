@@ -65,6 +65,8 @@ final class TripData extends ObjectData
 
     public array $files = [];
 
+    public string $file = '';
+
     public array $external_files = [];
 
     public array $documents = [];
@@ -108,7 +110,7 @@ final class TripData extends ObjectData
             'assigned_user_id' => CrmIdValueObject::fromNative(
                 $request->input($prefix . 'assigned_user_id')
             ),
-            'file' => $request->input($prefix . 'file', []),
+            'file' => $request->input($prefix . 'file', ''),
             'documents' => $request->file('document'),
             'external_files' => ImageHelper::convertToUrlValues($request->input($prefix . 'external_file', [])),
             'children' => $children->toArray()

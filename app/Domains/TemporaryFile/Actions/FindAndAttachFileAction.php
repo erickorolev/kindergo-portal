@@ -17,6 +17,7 @@ final class FindAndAttachFileAction extends \Parents\Actions\Action
     {
         /** @var ?TemporaryFile $fileModel */
         $fileModel = FindFileTask::run($folder);
+
         if (!$fileModel) {
             /** @var Model $destination */
             $destination->forceDelete();

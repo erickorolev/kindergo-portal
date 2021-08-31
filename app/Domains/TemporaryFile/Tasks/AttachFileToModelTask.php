@@ -18,7 +18,7 @@ final class AttachFileToModelTask extends \Parents\Tasks\Task
         $this->repository = $repository;
     }
 
-    public function handle(TemporaryFile $file, HasMedia $destination, string $collection = 'realty'): bool
+    public function handle(TemporaryFile $file, HasMedia $destination, string $collection = 'avatar'): bool
     {
         $destination->addMedia(storage_path('app/public/uploads/tmp/' . $file->folder . '/' . $file->filename))
             ->toMediaCollection($collection);

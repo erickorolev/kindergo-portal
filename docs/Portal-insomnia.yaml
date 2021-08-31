@@ -1,8 +1,61 @@
 _type: export
 __export_format: 4
-__export_date: 2021-08-30T20:25:37.509Z
+__export_date: 2021-08-31T10:04:55.932Z
 __export_source: insomnia.desktop.app:v2021.5.0
 resources:
+  - _id: req_4af532d2b33d4adabba98e23d3b66ea2
+    parentId: fld_8d3025fe8a414d02b84819f7cb4b29cf
+    modified: 1630403457763
+    created: 1630402447680
+    url: "{{ _.BASE_URL }}/upload"
+    name: Upload File
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_73cd426a0bc747fbaf79b7adac747dba
+          name: file_upload
+          value: ""
+          description: ""
+          type: file
+          multiline: null
+          fileName: /home/sergey/Изображения/2021-07-12_14-07.png
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_b1fb5f9d8525489287cc6349152ac76d
+    authentication:
+      type: bearer
+      token: "{{ _.RESTRICTED_TOKEN }}"
+    metaSortKey: -1630402447680
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_8d3025fe8a414d02b84819f7cb4b29cf
+    parentId: wrk_ff565366b1af4680bda99caa3453bd18
+    modified: 1630402430089
+    created: 1630402430089
+    name: Temporary File
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1630402430089
+    _type: request_group
+  - _id: wrk_ff565366b1af4680bda99caa3453bd18
+    parentId: null
+    modified: 1629372806629
+    created: 1629372806629
+    name: Kindergou-Portal
+    description: ""
+    scope: collection
+    _type: workspace
   - _id: req_38b1254a3e954a6987bd71b42df75af5
     parentId: fld_751f58a5cf7b42e99de2afd8891fcec6
     modified: 1629375324919
@@ -44,14 +97,6 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1629375279039
     _type: request_group
-  - _id: wrk_ff565366b1af4680bda99caa3453bd18
-    parentId: null
-    modified: 1629372806629
-    created: 1629372806629
-    name: Kindergou-Portal
-    description: ""
-    scope: collection
-    _type: workspace
   - _id: req_8aaa0371033242479319a09550fe78ee
     parentId: fld_8fc157fca6eb4abaa2bf00719d5616ec
     modified: 1630353983672
@@ -172,9 +217,9 @@ resources:
     _type: request
   - _id: req_160c13c771ac4b2ea15e7097ced65648
     parentId: fld_2ba587c678684c22b3b36c3023a6573f
-    modified: 1630354833968
+    modified: 1630404158717
     created: 1630354533123
-    url: "{{ _.BASE_URL }}/trips/2"
+    url: "{{ _.BASE_URL }}/trips/3"
     name: Edit Trip
     description: ""
     method: PATCH
@@ -186,20 +231,21 @@ resources:
             "type": "trips",
             "id": "2",
             "attributes": {
-              "name": "second test",
-              "where_address": "where second",
-              "date": "2016-08-01",
+              "name": "Third test",
+              "where_address": "where third",
+              "date": "2021-08-01",
               "time": "15:18:18",
               "childrens": 3,
-              "duration": 5,
+              "duration": 6,
               "distance": 15,
               "status": "Appointed",
               "scheduled_wait_where": 12,
               "scheduled_wait_from": 15,
-              "not_scheduled_wait_where": 12,
-              "not_scheduled_wait_from": 15,
+              "not_scheduled_wait_where": 22,
+              "not_scheduled_wait_from": 33,
               "parking_cost": 111222,
-              "attendant_income": 333444
+              "attendant_income": 333444,
+        			"file": "612df7ecb8f493.11509306-1630402540"
             }
           }
         }
@@ -236,7 +282,7 @@ resources:
     _type: request_group
   - _id: req_89e739b837c6422a9ec3ca6575184603
     parentId: fld_2ba587c678684c22b3b36c3023a6573f
-    modified: 1629374912804
+    modified: 1630402599841
     created: 1629374886034
     url: "{{ _.BASE_URL }}/trips"
     name: List of All Trips
@@ -267,9 +313,9 @@ resources:
     _type: request
   - _id: req_306e726c43df41c9a3d738dc94b60591
     parentId: fld_2ba587c678684c22b3b36c3023a6573f
-    modified: 1629375139664
+    modified: 1630402743526
     created: 1629375133589
-    url: "{{ _.BASE_URL }}/trips/2"
+    url: "{{ _.BASE_URL }}/trips/3"
     name: Get Trip By Id
     description: ""
     method: GET
