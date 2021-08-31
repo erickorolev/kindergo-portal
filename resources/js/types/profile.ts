@@ -1,0 +1,31 @@
+export interface Profile {
+  id: string;
+  firstname: string;
+  lastname: string;
+  middle_name: string;
+  email: string;
+  phone: string;
+  otherphone: string;
+  gender: string;
+  attendant_category: string;
+  attendant_status: string;
+  attendant_hired: string;
+  birthday: string;
+  mailingzip: number;
+  mailingcountry: string;
+  mailingstate: string;
+  mailingcity: string;
+  mailingstreet: string;
+  otherzip: number;
+  othercountry: string;
+  otherstate: string;
+  othercity: string;
+  otherstreet: string;
+  metro_station: string;
+  car_model: string;
+  car_year: number;
+  car_color: string;
+  resume: string;
+  payment_data: string;
+  media: string;  
+}
