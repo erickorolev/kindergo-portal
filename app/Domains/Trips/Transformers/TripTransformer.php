@@ -43,8 +43,8 @@ final class TripTransformer extends Transformer
             'status' => $model->status->toArray(),
             'scheduled_wait_where' => $model->scheduled_wait_where,
             'scheduled_wait_from' => $model->scheduled_wait_from,
-            'not_scheduled_wait_where' => $model->scheduled_wait_where,
-            'not_scheduled_wait_from' => $model->scheduled_wait_from,
+            'not_scheduled_wait_where' => $model->not_scheduled_wait_where,
+            'not_scheduled_wait_from' => $model->not_scheduled_wait_from,
             'parking_cost' => $model->parking_cost?->toNative(),
             'attendant_income' => $model->attendant_income?->toNative(),
             'meta' => [
