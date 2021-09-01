@@ -6,8 +6,8 @@
           <div
             class="s-header-toggle w-5 block lg:hidden text-3xl md:mr-6 mr-4 cursor-pointer"
           >
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-times hidden"></i>
+            <i v-if="!showMenu" class="fas fa-bars" @click="toggleMenu"></i>
+            <i v-if="showMenu" class="fas fa-times" @click="toggleMenu"></i>
           </div>
           <div class="s-header-logo mr-6">
             <a class="cursor-pointer" @click="onNavigate('/')">
@@ -18,6 +18,31 @@
               />
             </a>
           </div>
+          <ul
+            v-if="showMenu"
+            class="s-header-list list-none m-0 border border-main-gray-light flex justify-start rounded-lg bg-white items-stretch lg:hidden active"
+          >
+            <li
+              class="lg:border-r border-main-gray-light lg:rounded-l-lg"
+              :class="currentUrl.indexOf('trips') > -1 ? 'active' : ''"
+            >
+              <a
+                @click="onNavigate('/trips')"
+                class="cursor-pointer px-5 py-3.5 block lg:rounded-l-lg hover:bg-header-blue transition duration-500 ease-in-out"
+                >Поездки</a
+              >
+            </li>
+            <li
+              class="lg:border-r border-main-gray-light"
+              :class="currentUrl.indexOf('payments') > -1 ? 'active' : ''"
+            >
+              <a
+                @click="onNavigate('/payments')"
+                class="cursor-pointer px-5 py-3.5 block rounded-r-lg hover:bg-header-blue transition duration-500 ease-in-out"
+                >Платежи</a
+              >
+            </li>
+          </ul>
           <ul
             class="s-header-list list-none m-0 border border-main-gray-light flex justify-start rounded-lg bg-white items-stretch hidden lg:flex"
           >
@@ -75,7 +100,10 @@ export default defineComponent({
   components: {
     PopComponent
   },
-  setup() {},
+  setup() {
+    const showMenu = ref<Boolean>(false);
+    return { showMenu };
+  },
   mounted() {},
   methods: {
     openpop(): void {
@@ -83,6 +111,9 @@ export default defineComponent({
     },
     onNavigate(url: string): void {
       this.$router.push(url);
+    },
+    toggleMenu(): void {
+      this.showMenu = !this.showMenu;
     }
   }
 });
