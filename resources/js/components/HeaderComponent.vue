@@ -94,26 +94,25 @@ export default defineComponent({
   data() {
     return {
       userpop: false,
+      showMenu: false,
       currentUrl: this.$route.path
     };
   },
   components: {
     PopComponent
   },
-  setup() {
-    const showMenu = ref<Boolean>(false);
-    return { showMenu };
-  },
   mounted() {},
   methods: {
     openpop(): void {
       this.userpop = !this.userpop;
+      this.showMenu = false;
     },
     onNavigate(url: string): void {
       this.$router.push(url);
     },
     toggleMenu(): void {
       this.showMenu = !this.showMenu;
+      this.userpop = false;
     }
   }
 });

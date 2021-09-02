@@ -141,3 +141,11 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped lang="scss">
+.w-60 {
+  @media (max-width: 767px) {
+    width: 7rem;
+  }
+}
+</style>

@@ -4,7 +4,9 @@
     <div class="s-about py-8 pb-20">
       <div class="container mx-auto">
         <div class="border-b border-black">
-          <h2 class="text-black text-2xl">Информация вашего профиля</h2>
+          <h2 class="text-black text-2xl">
+            Изменение информации вашего профиля
+          </h2>
         </div>
         <div class="flex pt-8 justify-start flex-wrap md:flex-nowrap">
           <div class="w-full lg:w-1/2 md:w-4/5 order-2 md:order-1 pt-6 md:pt-0">
