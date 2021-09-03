@@ -45,7 +45,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"base_url\": () => (/* binding */ base_url)\n/* harmony export */ });\nvar base_url = \"http://localhost\";//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvZGF0YS9pbmRleC50cy5qcyIsIm1hcHBpbmdzIjoiOzs7O0FBQU8sSUFBTSxRQUFRLEdBQUcsa0JBQWpCIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2pzL2RhdGEvaW5kZXgudHM/ODA5NiJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY29uc3QgYmFzZV91cmwgPSBcImh0dHA6Ly9sb2NhbGhvc3RcIjsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/js/data/index.ts\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"base_url\": () => (/* binding */ base_url)\n/* harmony export */ });\nvar base_url = \"https://portal.kindergo.site\";//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvZGF0YS9pbmRleC50cy5qcyIsIm1hcHBpbmdzIjoiOzs7O0FBQU8sSUFBTSxRQUFRLEdBQUcsOEJBQWpCIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2pzL2RhdGEvaW5kZXgudHM/ODA5NiJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY29uc3QgYmFzZV91cmwgPSBcImh0dHBzOi8vcG9ydGFsLmtpbmRlcmdvLnNpdGVcIjsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/js/data/index.ts\n");
 
 /***/ }),
 
