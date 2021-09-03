@@ -27,18 +27,25 @@
             <div class="font-bold w-full sm:w-3/6 px-3">
               Подпись <br />сопровождающего
             </div>
-            <div class="w-full sm:w-3/6 font-sans px-3">
-              <div class="select inline-flex">
-                <select
-                  class="js-select"
-                  name="type"
-                  v-model="attendanta_signature_value"
-                >
-                  <option value="Waiting">Waiting</option>
-                  <option value="Signed by">Signed by</option>
-                  <option value="Disputed">Disputed</option>
-                </select>
-              </div>
+            <div class="w-full sm:w-3/6 font-sans px-3 relative">
+              <span class="cursor-pointer" @click="showAttendantSignature">
+                {{attendanta_signature_value}}
+                <i class="fas fa-angle-down ml-2"></i>
+              </span>
+              <ul
+                v-if="showAttendant"
+                class="s-header-list list-none m-0 border border-main-gray-light flex justify-start rounded-lg bg-white items-stretch flex active"
+              >
+                <li class="border-r border-main-gray-light rounded-l" @click="attendantSignature('Waiting')">
+                  Wating
+                </li>
+                <li class="border-r border-main-gray-light" @click="attendantSignature('Signed by')">
+                  Signed by
+                </li>
+                <li class="border-r border-main-gray-light" @click="attendantSignature('Disputed')">
+                  Disputed
+                </li>
+              </ul>
             </div>
           </li>
           <li class="block sm:flex mb-6 md:w-1/2 w-full">
@@ -98,6 +105,7 @@ export default defineComponent({
     HeaderComponent
   },
   setup() {
+    const showAttendant = ref<Boolean>(false);
     const id = ref<String>("");
     const pay_date = ref<String>("");
     const pay_type_value = ref<String>("");
@@ -108,6 +116,7 @@ export default defineComponent({
     const spstatus = ref<String>("");
     const spstatus_value = ref<String>("");
     return {
+      showAttendant,
       id,
       pay_date,
       pay_type_value,
@@ -185,7 +194,27 @@ export default defineComponent({
     },
     onNavigate(url: string): void {
       this.$router.push(url);
+    },
+    showAttendantSignature() {
+      this.showAttendant = !this.showAttendant;
+    },
+    attendantSignature(value: string): void {
+      this.attendanta_signature_value = value;
+      this.showAttendant = false;
     }
   }
 });
 </script>
+<style scoped lang="scss">
+  .s-header-list.active {
+    position: absolute;
+    left: 15px;
+    top: 36px;
+    display: block;
+    z-index: 999;
+    li {
+      padding: 10px 30px;
+      border-bottom: 1px solid;
+    }    
+  }
+</style>
