@@ -131,7 +131,7 @@ export default defineComponent({
   mounted() {
     const auth = localStorage.getItem("token");
     const vm = this;
-    const currentUrl = this.$route.path;
+    const currentUrl = this.$route.path.split('/');
     this.id = currentUrl[currentUrl.length - 1];
     axios
       .get(`/api/v1/payments/${this.id}`, {
