@@ -10,7 +10,7 @@
             <i v-if="showMenu" class="fas fa-times" @click="toggleMenu"></i>
           </div>
           <div class="s-header-logo mr-6">
-            <a class="cursor-pointer" @click="onNavigate('/')">
+            <a class="cursor-pointer" @click="onNavigate('/trips')">
               <img
                 class="mx-auto w-auto position-sticky"
                 src="../../img/logo.jpg"
