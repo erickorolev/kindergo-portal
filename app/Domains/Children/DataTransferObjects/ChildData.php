@@ -99,7 +99,7 @@ final class ChildData extends ObjectData
             'phone' => PhoneNumberValueObject::fromNative($data->get('phone')),
             'birthday' => Carbon::createFromFormat('Y-m-d', $data->get('birthday')),
             'gender' => GenderEnum::fromValue($data->get('gender')),
-            'users' => $data->get('contact_id') ? [$data->get('contact_id')] : [],
+            'users' => [],
             'external_file' => ImageHelper::getValueObjectFromArray($data->get('avatar', [])),
             'documents' => ImageHelper::convertDocumentsToValueObject($data->get('images', []))
 
