@@ -36,7 +36,6 @@ final class GetUsersFromVtigerCommand extends Command
             } catch (\Exception $e) {
                 Log::error('Failed to save User data from Vtiger in DB for ' . $contact['id'] . ': '
                     . $e->getMessage());
-                ray($e->getTraceAsString());
                 app('sentry')->captureException($e);
                 continue;
             }
