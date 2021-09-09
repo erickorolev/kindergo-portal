@@ -35,3 +35,15 @@ Default credentials
 Username: `admin@admin.com`
 
 Password: `password`
+
+### Import data from Vtiger
+
+System supports following commands for getting data from Vtiger:
+
+* `php artisan users:receive` - getting all attendants in contacts module of Vtiger. When user created, we send an email with password to user.
+* `php artisan children:receive` - getting all children in contacts module in Vtiger.
+* `php artisan payments:receive` - import payments from SPPayments module in Vtiger
+* `php artisan trips:receive` - Getting trips from vtiger
+
+### Логи
+`/storage/logs`

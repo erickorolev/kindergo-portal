@@ -8,7 +8,7 @@
         </div>
         <ul class="s-about-info text-black pt-8 flex flex-wrap -mx-3">
           <li class="block sm:flex mb-6 md:w-1/2 w-full">
-            <div class="w-full sm:w-3/6 px-3">Откуда</div>
+            <div class="font-bold w-full sm:w-3/6 px-3">Откуда</div>
             <div class="w-full sm:w-3/6 font-sans px-3">
               {{ trip.name }}
             </div>
@@ -49,20 +49,43 @@
           </li>
           <li class="block sm:flex mb-6 md:w-1/2 w-full">
             <div class="font-bold w-full sm:w-3/6 px-3">Статус выполнения</div>
-            <div class="w-full sm:w-3/6 font-sans px-3">
-              <div class="select inline-flex">
-                <select class="js-select" name="type">
-                  <option value="Не подтверждена">Не подтверждена</option>
-                  <option value="Подтверждаю">Подтверждаю</option>
-                  <option value="Опаздываю">Опаздываю</option>
-                  <option value="На месте">На месте</option>
-                  <option value="Нет ребенка">Нет ребенка</option>
-                  <option value="Забрала ребенка">Забрала ребенка</option>
-                  <option value="Что-то случилось">Что-то случилось</option>
-                  <option value="Привезла ребенка">Привезла ребенка</option>
-                  <option value="Завершить поездку">Завершить поездку</option>
-                </select>
-              </div>
+            <div class="w-full sm:w-3/6 font-sans px-3 relative">
+              <span class="cursor-pointer" @click="showExcutionStatus">
+                {{excutionStatusValue}}
+                <i class="fas fa-angle-down ml-2"></i>
+              </span>
+              <ul
+                v-if="showExcution"
+                class="s-header-list list-none m-0 border border-main-gray-light flex justify-start rounded-lg bg-white items-stretch flex active"
+              >
+                <li class="border-r border-main-gray-light rounded-l" @click="excutionStatus('Не подтверждена')">
+                  Не подтверждена
+                </li>
+                <li class="border-r border-main-gray-light" @click="excutionStatus('Подтверждаю')">
+                  Подтверждаю
+                </li>
+                <li class="border-r border-main-gray-light" @click="excutionStatus('Опаздываю')">
+                  Опаздываю
+                </li>
+                <li class="border-r border-main-gray-light" @click="excutionStatus('На месте')">
+                  На месте
+                </li>
+                <li class="border-r border-main-gray-light" @click="excutionStatus('Нет ребенка')">
+                  Нет ребенка
+                </li>
+                <li class="border-r border-main-gray-light" @click="excutionStatus('Забрала ребенка')">
+                  Забрала ребенка
+                </li>
+                <li class="border-r border-main-gray-light" @click="excutionStatus('Что-то случилось')">
+                  Что-то случилось
+                </li>
+                <li class="border-r border-main-gray-light" @click="excutionStatus('Привезла ребенка')">
+                  Привезла ребенка
+                </li>
+                <li class="border-r border-main-gray-light" @click="excutionStatus('Завершить поездку')">
+                  Завершить поездку
+                </li>
+              </ul>              
             </div>
           </li>
           <li class="block sm:flex md:w-1/2 w-full">
@@ -316,6 +339,8 @@ export default defineComponent({
     HeaderComponent
   },
   setup() {
+    const showExcution = ref<Boolean>(false);
+    const excutionStatusValue = ref<String>("Не подтверждена");
     const id = ref<String>("");
     const trip = ref<Trip>({
       id: "",
@@ -357,6 +382,8 @@ export default defineComponent({
     const status_value = ref<String>("");
     const fileid = ref<string>("");
     return {
+      showExcution,
+      excutionStatusValue,
       id,
       trip,
       child1,
@@ -371,7 +398,7 @@ export default defineComponent({
   mounted() {
     const auth = localStorage.getItem("token");
     const vm = this;
-    const currentUrl = this.$route.path;
+    const currentUrl = this.$route.path.split('/');
     this.id = currentUrl[currentUrl.length - 1];
     let children: Array<any> = [];
 
@@ -547,7 +574,27 @@ export default defineComponent({
     },
     removefile() {
       this.fileid = "";
+    },
+    showExcutionStatus() {
+      this.showExcution = !this.showExcution;
+    },
+    excutionStatus(value: string): void {
+      this.excutionStatusValue = value;
+      this.showExcution = false;
     }
   }
 });
 </script>
+<style scoped lang="scss">
+  .s-header-list.active {
+    position: absolute;
+    left: 15px;
+    top: 36px;
+    display: block;
+    z-index: 999;
+    li {
+      padding: 10px 30px;
+      border-bottom: 1px solid;
+    }    
+  }
+</style>

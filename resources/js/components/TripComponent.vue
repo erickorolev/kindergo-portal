@@ -8,7 +8,7 @@
         </div>
         <ul class="s-about-info text-black pt-8 flex flex-wrap -mx-3">
           <li class="block sm:flex mb-6 md:w-1/2 w-full">
-            <div class="w-full sm:w-3/6 px-3">Откуда</div>
+            <div class="font-bold w-full sm:w-3/6 px-3">Откуда</div>
             <div class="w-full sm:w-3/6 font-sans px-3">
               {{ trip.name }}
             </div>
@@ -24,9 +24,9 @@
             <div class="w-full sm:w-3/6 font-sans px-3">
               {{
                 ("0" + new Date(trip.date).getDate()).substr(-2) +
-                " " +
+                "." +
                 ("0" + (new Date(trip.date).getMonth() + 1)).substr(-2) +
-                " " +
+                "." +
                 new Date(trip.date).getFullYear()
               }}
             </div>

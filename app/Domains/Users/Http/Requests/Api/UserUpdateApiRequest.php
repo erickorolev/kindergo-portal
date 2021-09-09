@@ -49,7 +49,7 @@ final class UserUpdateApiRequest extends Request
             'data.attributes.car_model' => ['nullable', 'max:100', 'string'],
             'data.attributes.car_year' => ['nullable', 'max:10', 'string'],
             'data.attributes.car_color' => ['nullable', 'max:190', 'string'],
-            'data.attributes.resume' => ['nullable', 'max:255', 'string'],
+            'data.attributes.resume' => ['nullable', 'string'],
             'data.attributes.payment_data' => ['nullable', 'max:255', 'string'],
             'data.attributes.otherphone' => ['nullable', 'phone:RU'],
             'data.attributes.file' => ['nullable', 'max:100'],

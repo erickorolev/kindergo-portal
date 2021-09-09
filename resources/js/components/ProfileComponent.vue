@@ -204,12 +204,6 @@
               </li>
               <li class="block sm:flex mb-6">
                 <div class="font-bold w-full sm:w-2/5 md:w-3/6">
-                  Тел куратора
-                </div>
-                <div class="w-full sm:w-3/5 md:w-3/6 font-sans"></div>
-              </li>
-              <li class="block sm:flex mb-6">
-                <div class="font-bold w-full sm:w-2/5 md:w-3/6">
                   Платежные данные
                 </div>
                 <div class="w-full sm:w-3/5 md:w-3/6 font-sans">

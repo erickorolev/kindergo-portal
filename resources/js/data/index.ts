@@ -1,1 +1,1 @@
-export const base_url = "http://localhost";
+export const base_url = "https://portal.kindergo.site";

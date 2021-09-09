@@ -47,7 +47,7 @@ final class UserStoreRequest extends Request
             'car_model' => ['nullable', 'max:100', 'string'],
             'car_year' => ['nullable', 'max:10', 'string'],
             'car_color' => ['nullable', 'max:190', 'string'],
-            'resume' => ['nullable', 'max:255', 'string'],
+            'resume' => ['nullable', 'string'],
             'payment_data' => ['nullable', 'max:255', 'string'],
             'imagename' => ['nullable', 'image'],
             'roles' => 'array',

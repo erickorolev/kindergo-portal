@@ -37573,6 +37573,7 @@ video {
     top: 60px;
     display: block;
     border-top-right-radius: 0.5rem;
+	z-index: 999;
   }
 
   .s-header-list li {

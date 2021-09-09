@@ -4,7 +4,9 @@
     <div class="s-about py-8 pb-20">
       <div class="container mx-auto">
         <div class="border-b border-black">
-          <h2 class="text-black text-2xl">Информация вашего профиля</h2>
+          <h2 class="text-black text-2xl">
+            Изменение информации вашего профиля
+          </h2>
         </div>
         <div class="flex pt-8 justify-start flex-wrap md:flex-nowrap">
           <div class="w-full lg:w-1/2 md:w-4/5 order-2 md:order-1 pt-6 md:pt-0">
@@ -232,6 +234,7 @@
                       type="text"
                       name="modelcar"
                       class="block border border-main-gray outline-none px-2 h-8 text-black font-sans w-full"
+                      v-model="car_model"
                     />
                   </div>
                 </div>
@@ -264,14 +267,6 @@
                       v-model="car_color"
                     />
                   </div>
-                </div>
-              </li>
-              <li class="block sm:flex mb-6">
-                <div class="font-bold w-full sm:w-2/5 md:w-3/6">
-                  Тел куратора
-                </div>
-                <div class="w-full sm:w-3/5 md:w-3/6 font-sans">
-                  {{ otherzip }}
                 </div>
               </li>
               <li class="block sm:flex mb-6">
@@ -326,29 +321,7 @@
           </div>
           <div class="w-full lg:w-1/2 md:w-1/5 order-1 md:order-2">
             <div class="s-about-avatar pr-4">
-              <div class="flex">
-                <div class="font-bold pb-4 text-black mr-4">Фотография</div>
-                <form action="#">
-                  <div class="input-file-container">
-                    <input
-                      class="input-file"
-                      id="my-file"
-                      type="file"
-                      @change="fileUpload($event)"
-                    />
-                    <label tabindex="0" for="my-file" class="input-file-trigger"
-                      ><img src="../../img/icon-edit.png" alt="img" width="20"
-                    /></label>
-                  </div>
-                </form>
-              </div>
-              <div class="py-3" v-if="fileid !== ''">
-                <span>файл выбран</span>
-                <i
-                  class="fas fa-times pl-2 cursor-pointer"
-                  @click="removefile"
-                ></i>
-              </div>
+              <div class="font-bold pb-4 text-black mr-4">Фотография</div>
               <img
                 v-if="media !== ''"
                 :src="media"
