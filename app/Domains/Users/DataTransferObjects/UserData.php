@@ -99,6 +99,8 @@ final class UserData extends ObjectData
 
     public array $documents = [];
 
+    public array $external_documents = [];
+
     public Carbon $created_at;
 
     public Carbon $updated_at;
@@ -220,7 +222,7 @@ final class UserData extends ObjectData
             'assigned_user_id' => CrmIdValueObject::fromNative($data->get('assigned_user_id')),
             'roles' => [],
             'external_file' => ImageHelper::getValueObjectFromArray($data->get('avatar', [])),
-            'documents' => ImageHelper::convertDocumentsToValueObject($data->get('images', []))
+            'external_documents' => ImageHelper::convertDocumentsToValueObject($data->get('images', []))
         ]);
     }
 }

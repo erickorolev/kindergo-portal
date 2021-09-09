@@ -90,7 +90,7 @@ final class UpdateImagesTask extends \Parents\Tasks\Task
             }
         }
 
-        if (!empty($userData->documents)) {
+        if (property_exists($userData, 'external_documents') && !empty($userData->external_documents)) {
             /** @var UrlValueObject $document */
             foreach ($userData->documents as $document) {
                 $user->addMediaFromUrl($document->toNative())->toMediaCollection('documents');
