@@ -12,14 +12,16 @@ use Support\Media\Tasks\UpdateImagesTask;
 
 final class UpdateTripAction extends \Parents\Actions\Action
 {
-    public function handle(TripData $data): Trip
+    public function handle(TripData $data, bool $forceUpdate = false): Trip
     {
         /** @var Trip $trip */
         $trip = GetTripByIdAction::run($data->id);
         /** @var User $user */
         $user = Auth::user();
-        if (!$user->isSuperAdmin() && $trip->user_id !== Auth::id()) {
-            abort(403, 'You can not edit payments of other users');
+        if (!$forceUpdate) {
+            if (!$user->isSuperAdmin() && $trip->user_id !== Auth::id()) {
+                abort(403, 'You can not edit payments of other users');
+            }
         }
         $trip->update($this->filterData($data));
         if ($data->children) {

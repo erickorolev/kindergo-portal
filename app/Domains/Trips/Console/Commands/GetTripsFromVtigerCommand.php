@@ -32,7 +32,7 @@ final class GetTripsFromVtigerCommand extends Command
                 $existingTrip = GetTripByCrmIdAction::run($tripData->crmid);
                 if ($existingTrip) {
                     $tripData->id = $existingTrip->id;
-                    UpdateTripAction::run($tripData);
+                    UpdateTripAction::run($tripData, true);
                 } else {
                     StoreTripAction::run($tripData);
                 }
