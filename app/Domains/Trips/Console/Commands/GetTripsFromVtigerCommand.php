@@ -37,7 +37,7 @@ final class GetTripsFromVtigerCommand extends Command
                     StoreTripAction::run($tripData);
                 }
             } catch (\Exception $e) {
-                Log::error('Failed to save Timetable data from Vtiger in DB for '
+                Log::error('Failed to save Trip data from Vtiger in DB for '
                     . $trip['id'] . ': '
                     . $e->getMessage());
                 app('sentry')->captureException($e);

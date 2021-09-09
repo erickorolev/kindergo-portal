@@ -133,7 +133,7 @@ final class TripData extends ObjectData
             'childrens' => (int) $data->get('childrens'),
             'duration' => (int) $data->get('duration'),
             'distance' => (float) $data->get('distance'),
-            'status' => TripStatusEnum::fromValue($data->get('status')),
+            'status' => TripStatusEnum::fromValue($data->get('trips_status')),
             'scheduled_wait_where' => (int) $data->get('scheduled_wait_where'),
             'scheduled_wait_from' => (int) $data->get('scheduled_wait_from'),
             'not_scheduled_wait_where' => $data->get('not_scheduled_wait_where') ?
