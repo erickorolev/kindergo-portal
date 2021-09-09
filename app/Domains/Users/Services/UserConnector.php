@@ -19,7 +19,7 @@ final class UserConnector extends \Parents\Services\ConnectorService
 
         try {
             $contacts = $this->client->entities?->findMany('Contacts', [
-                'type' => 'Client',
+                'type' => 'Attendant',
                 'modifiedtime' => Carbon::now()->subDay()->format('Y-m-d')
             ]);
         } catch (WSException $e) {

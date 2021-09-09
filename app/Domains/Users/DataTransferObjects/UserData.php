@@ -185,7 +185,7 @@ final class UserData extends ObjectData
             'lastname' => $data->get('lastname'),
             'middle_name' => $data->get('middle_name'),
             'phone' => PhoneNumberValueObject::fromNative($data->get('phone')),
-            'gender' => GenderEnum::fromValue($data->get('attendant_gender', 'Other')),
+            'gender' => GenderEnum::fromValue($data->get('gender', 'Other')),
             'otherphone' => $data->get('otherphone') ?
                 PhoneNumberValueObject::fromNative($data->get('otherphone')) : null,
             'attendant_category' => AttendantCategoryEnum::fromValue(
