@@ -32,5 +32,16 @@ return [
         \Domains\Trips\Enums\TripStatusEnum::COMPLETED => 'Завершена',
         \Domains\Trips\Enums\TripStatusEnum::CANCELED => 'Отменена',
         \Domains\Trips\Enums\TripStatusEnum::PENDING => 'В ожидании',
+    ],
+    \Domains\Payments\Enums\AttendantSignatureEnum::class => [
+        \Domains\Payments\Enums\AttendantSignatureEnum::DISPUTED => 'Оспорить',
+        \Domains\Payments\Enums\AttendantSignatureEnum::SIGNED_BY => 'Подписать',
+        \Domains\Payments\Enums\AttendantSignatureEnum::WAITING => 'Ожидает подписи'
+    ],
+    \Domains\Payments\Enums\SpStatusEnum::class => [
+        \Domains\Payments\Enums\SpStatusEnum::DELAYED => 'Просрочен',
+        \Domains\Payments\Enums\SpStatusEnum::CANCELED => 'Отменён',
+        \Domains\Payments\Enums\SpStatusEnum::EXECUTED => 'Выполнен',
+        \Domains\Payments\Enums\SpStatusEnum::SCHEDULED => 'Запланирован',
     ]
 ];
