@@ -37,7 +37,7 @@
                   "." +
                   new Date(item.pay_date).getFullYear()
                 }}</span>
-                <span class="px-3.5 w-60">{{ item.amount }}</span>
+                <span class="px-3.5 w-60">{{ formatPrice(item.amount) }}</span>
                 <span class="pl-3.5 w-44">{{ item.spstatus }}</span>
               </a>
             </div>
@@ -137,6 +137,10 @@ export default defineComponent({
         .catch(function (error) {
           console.log(error);
         });
+    },
+    formatPrice(value:number): string {
+      let val = (value/1).toFixed(2).replace('.', ',')
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
     }
   }
 });

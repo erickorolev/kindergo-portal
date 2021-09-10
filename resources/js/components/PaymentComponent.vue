@@ -22,7 +22,7 @@
           <li class="block sm:flex mb-6 md:w-1/2 w-full">
             <div class="font-bold w-full sm:w-3/6 px-3">Сумма (руб)</div>
             <div class="w-full sm:w-3/6 font-sans px-3">
-              {{ payment.amount }}
+              {{ formatPrice(payment.amount) }}
             </div>
           </li>
           <li class="block sm:flex mb-6 md:w-1/2 w-full">
@@ -116,6 +116,10 @@ export default defineComponent({
   methods: {
     onNavigate(url: string): void {
       this.$router.push(url);
+    },
+    formatPrice(value:number): string {
+      let val = (value/1).toFixed(2).replace('.', ',')
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
     }
   }
 });
