@@ -31,7 +31,7 @@ final class GetPaymentsFromVtigerCommand extends Command
                 $existingTimetable = GetPaymentByCrmIdAction::run($paymentData->crmid);
                 if ($existingTimetable) {
                     $paymentData->id = $existingTimetable->id;
-                    UpdatePaymentAction::run($paymentData);
+                    UpdatePaymentAction::run($paymentData, true);
                 } else {
                     StorePaymentAction::run($paymentData);
                 }

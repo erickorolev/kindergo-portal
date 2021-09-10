@@ -11,16 +11,19 @@ use Illuminate\Support\Facades\Auth;
 
 final class UpdatePaymentAction extends \Parents\Actions\Action
 {
-    public function handle(PaymentData $data): Payment
+    public function handle(PaymentData $data, bool $forceUpdate = false): Payment
     {
         /** @var Payment $payment */
         $payment = GetPaymentByIdAction::run($data->id);
         $updated = $data->toArray();
         /** @var User $user */
         $user = Auth::user();
-        if (!$user->isSuperAdmin() && $payment->user_id !== Auth::id()) {
-            abort(403, 'You can not edit payments of other users');
+        if (!$forceUpdate) {
+            if (!$user->isSuperAdmin() && $payment->user_id !== Auth::id()) {
+                abort(403, 'You can not edit payments of other users');
+            }
         }
+
         if (isset($updated['user_id']) && !$updated['user_id']) {
             unset($updated['user_id']);
         }
