@@ -21,7 +21,7 @@
           </li>
           <li class="block sm:flex mb-6 md:w-1/2 w-full">
             <div class="font-bold w-full sm:w-3/6 px-3">Сумма (руб)</div>
-            <div class="w-full sm:w-3/6 font-sans px-3">{{ amount }}</div>
+            <div class="w-full sm:w-3/6 font-sans px-3">{{ formatPrice(amount) }}</div>
           </li>
           <li class="block sm:flex mb-6 md:w-1/2 w-full">
             <div class="font-bold w-full sm:w-3/6 px-3">
@@ -36,14 +36,14 @@
                 v-if="showAttendant"
                 class="s-header-list list-none m-0 border border-main-gray-light flex justify-start rounded-lg bg-white items-stretch flex active"
               >
-                <li class="border-r border-main-gray-light rounded-l" @click="attendantSignature('Waiting')">
-                  Wating
+                <li class="border-r border-main-gray-light rounded-l" @click="attendantSignature('Ожидает подписи')">
+                  Ожидает подписи
                 </li>
-                <li class="border-r border-main-gray-light" @click="attendantSignature('Signed by')">
-                  Signed by
+                <li class="border-r border-main-gray-light" @click="attendantSignature('Подписать')">
+                  Подписать
                 </li>
-                <li class="border-r border-main-gray-light" @click="attendantSignature('Disputed')">
-                  Disputed
+                <li class="border-r border-main-gray-light" @click="attendantSignature('Оспорить')">
+                  Оспорить
                 </li>
               </ul>
             </div>
@@ -201,6 +201,10 @@ export default defineComponent({
     attendantSignature(value: string): void {
       this.attendanta_signature_value = value;
       this.showAttendant = false;
+    },
+    formatPrice(value:number): string {
+      let val = (value/1).toFixed(2).replace('.', ',')
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
     }
   }
 });
