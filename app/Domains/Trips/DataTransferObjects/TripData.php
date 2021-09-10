@@ -119,7 +119,7 @@ final class TripData extends ObjectData
 
     public static function fromConnector(Collection $data): self
     {
-        $user_id = GetClearUserIdAction::run($data->get('trips_contact'));
+        $user_id = GetClearUserIdAction::run($data->get('cf_nrl_contacts59_id'));
         $children = GetChildrenIdsFromArrayAction::run($data->get('children', []));
         return new self([
             'created_at' => now(),
