@@ -544,8 +544,12 @@ export default defineComponent({
           vm.$router.push("/profile");
         })
         .catch(function (error) {
-          console.log(error.response.data);
-          vm.$router.push("/profile");
+          const msg = error.response.data.message;
+          if (msg == 'Unable to parse URI: http://') {
+            vm.$router.push("/profile");
+          } else {
+            alert(msg);
+          }          
         });
     },
     fileUpload(e: any) {
