@@ -47,7 +47,7 @@
             <div class="font-bold w-full sm:w-3/6 px-3">Статус поездки</div>
             <div class="w-full sm:w-3/6 font-sans px-3">{{ trip.status }}</div>
           </li>
-          <li class="block sm:flex mb-6 md:w-1/2 w-full">
+          <!-- <li class="block sm:flex mb-6 md:w-1/2 w-full">
             <div class="font-bold w-full sm:w-3/6 px-3">Статус выполнения</div>
             <div class="w-full sm:w-3/6 font-sans px-3 relative">
               <span class="cursor-pointer" @click="showExcutionStatus">
@@ -87,7 +87,7 @@
                 </li>
               </ul>              
             </div>
-          </li>
+          </li> -->
           <li class="block sm:flex md:w-1/2 w-full">
             <div class="font-bold w-full sm:w-3/6 px-3"></div>
             <div class="w-full sm:w-3/6 font-sans px-3"></div>
@@ -503,7 +503,7 @@ export default defineComponent({
     onNavigate(url: string): void {
       this.$router.push(url);
     },
-    update(): void {
+    update(): void {      
       const vm = this;
       const auth = localStorage.getItem("token");
       const body = {
