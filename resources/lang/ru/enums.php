@@ -4,7 +4,7 @@ return [
     \Parents\Enums\GenderEnum::class => [
         \Parents\Enums\GenderEnum::FEMALE => 'Женский',
         \Parents\Enums\GenderEnum::MALE => 'Мужской',
-        \Parents\Enums\GenderEnum::OTHER => 'Другой'
+        \Parents\Enums\GenderEnum::OTHER => 'Не указано'
     ],
     \Domains\Users\Enums\AttendantGenderEnum::class => [
         \Domains\Users\Enums\AttendantGenderEnum::FEMALE => 'Женский',
