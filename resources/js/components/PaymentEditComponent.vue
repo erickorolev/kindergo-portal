@@ -39,11 +39,11 @@
                 <li class="border-r border-main-gray-light rounded-l" @click="attendantSignature('Ожидает подписи')">
                   Ожидает подписи
                 </li>
-                <li class="border-r border-main-gray-light" @click="attendantSignature('Подписать')">
-                  Подписать
+                <li class="border-r border-main-gray-light" @click="attendantSignature('Подписан')">
+                  Подписан
                 </li>
-                <li class="border-r border-main-gray-light" @click="attendantSignature('Оспорить')">
-                  Оспорить
+                <li class="border-r border-main-gray-light" @click="attendantSignature('Оспорен')">
+                  Оспорен
                 </li>
               </ul>
             </div>
