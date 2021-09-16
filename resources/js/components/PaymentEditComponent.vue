@@ -29,7 +29,7 @@
             </div>
             <div class="w-full sm:w-3/6 font-sans px-3 relative">
               <span class="cursor-pointer" @click="showAttendantSignature">
-                {{attendanta_signature_value}}
+                {{attendanta_signature}}
                 <i class="fas fa-angle-down ml-2"></i>
               </span>
               <ul
