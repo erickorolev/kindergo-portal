@@ -523,7 +523,7 @@ export default defineComponent({
             childrens: this.trip.childrens,
             duration: this.trip.duration,
             distance: this.trip.distance,
-            status: this.status_value,
+            status: this.trip.status,
             scheduled_wait_where: this.trip.scheduled_wait_where,
             scheduled_wait_from: this.trip.scheduled_wait_from,
             not_scheduled_wait_where: this.trip.not_scheduled_wait_where,
