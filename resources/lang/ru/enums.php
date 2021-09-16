@@ -34,8 +34,8 @@ return [
         \Domains\Trips\Enums\TripStatusEnum::PENDING => 'В ожидании',
     ],
     \Domains\Payments\Enums\AttendantSignatureEnum::class => [
-        \Domains\Payments\Enums\AttendantSignatureEnum::DISPUTED => 'Оспорить',
-        \Domains\Payments\Enums\AttendantSignatureEnum::SIGNED_BY => 'Подписать',
+        \Domains\Payments\Enums\AttendantSignatureEnum::DISPUTED => 'Оспорен',
+        \Domains\Payments\Enums\AttendantSignatureEnum::SIGNED_BY => 'Подписан',
         \Domains\Payments\Enums\AttendantSignatureEnum::WAITING => 'Ожидает подписи'
     ],
     \Domains\Payments\Enums\SpStatusEnum::class => [
