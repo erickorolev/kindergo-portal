@@ -6,12 +6,13 @@ namespace Domains\Payments\Actions;
 
 use Domains\Payments\DataTransferObjects\PaymentData;
 use Domains\Payments\Models\Payment;
+use Domains\Payments\Jobs\SendPaymentToVtigerJob;
 use Domains\Users\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 final class UpdatePaymentAction extends \Parents\Actions\Action
 {
-    public function handle(PaymentData $data, bool $forceUpdate = false): Payment
+    public function handle(PaymentData $data, bool $forceUpdate = false, bool $dispatchUpdate = true): Payment
     {
         /** @var Payment $payment */
         $payment = GetPaymentByIdAction::run($data->id);
@@ -31,6 +32,9 @@ final class UpdatePaymentAction extends \Parents\Actions\Action
             unset($updated['crmid']);
         }
         $payment->update($updated);
+        if ($dispatchUpdate) {
+            SendPaymentToVtigerJob::dispatch($payment);
+        }
         return $payment;
     }
 }

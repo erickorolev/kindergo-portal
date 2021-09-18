@@ -14,12 +14,14 @@ use Domains\Payments\Http\Requests\Admin\DeletePaymentRequest;
 use Domains\Payments\Http\Requests\Admin\IndexPaymentRequest;
 use Domains\Payments\Http\Requests\Api\PaymentStoreApiRequest;
 use Domains\Payments\Http\Requests\Api\PaymentUpdateApiRequest;
+use Domains\Payments\Jobs\SendPaymentToVtigerJob;
 use Domains\Payments\Models\Payment;
 use Domains\Payments\Repositories\Eloquent\PaymentRepository;
 use Domains\Payments\Repositories\PaymentRepositoryInterface;
 use Domains\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Testing\Fluent\AssertableJson;
 use JMac\Testing\Traits\AdditionalAssertions;
 use Laravel\Sanctum\Sanctum;
@@ -81,6 +83,7 @@ class PaymentApiTest extends TestCase
      */
     public function it_stores_the_payment(): void
     {
+        Bus::fake();
         $data = Payment::factory()
             ->make()
             ->toArray();
@@ -106,6 +109,7 @@ class PaymentApiTest extends TestCase
             $this->assertTrue(false, $e->getMessage());
         }
         $data['amount'] = $data['amount'] * 100;
+//        Bus::assertDispatched(SendPaymentToVtigerJob::class);
         $this->assertDatabaseHas('payments', $data);
     }
 
@@ -114,6 +118,7 @@ class PaymentApiTest extends TestCase
      */
     public function it_updates_the_payment(): void
     {
+        Bus::fake();
         /** @var Payment $payment */
         $payment = Payment::factory()->create();
         /** @var User $user */
@@ -151,6 +156,7 @@ class PaymentApiTest extends TestCase
                 'attributes' => []
             ]
         ]);
+        Bus::assertDispatched(SendPaymentToVtigerJob::class);
     }
 
     /**

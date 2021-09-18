@@ -110,6 +110,19 @@ final class Payment extends Model
         return $data;
     }
 
+    public function toCrmArray(): array
+    {
+        $data = $this->toArray();
+        $data['type'] = 'SPPayments';
+        unset(
+            $data['crmid'],
+            $data['id'],
+            $data['created_at'],
+            $data['updated_at']
+        );
+        return $data;
+    }
+
     public function toFullArray(): array
     {
         $data = parent::toArray();

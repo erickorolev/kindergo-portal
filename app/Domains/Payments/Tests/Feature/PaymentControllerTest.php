@@ -9,10 +9,12 @@ use Domains\Payments\Enums\AttendantSignatureEnum;
 use Domains\Payments\Enums\PayTypeEnum;
 use Domains\Payments\Enums\SpStatusEnum;
 use Domains\Payments\Enums\TypePaymentEnum;
+use Domains\Payments\Jobs\SendPaymentToVtigerJob;
 use Domains\Payments\Models\Payment;
 use Domains\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Bus;
 use Parents\Tests\PhpUnit\TestCase;
 
 class PaymentControllerTest extends TestCase
@@ -123,6 +125,7 @@ class PaymentControllerTest extends TestCase
      */
     public function it_updates_the_payment(): void
     {
+        Bus::fake();
         /** @var Payment $payment */
         $payment = Payment::factory()->create();
         /** @var User $user */
@@ -145,6 +148,7 @@ class PaymentControllerTest extends TestCase
         $this->assertDatabaseHas('payments', $data);
 
         $response->assertRedirect(route('admin.payments.edit', $payment->id));
+        Bus::assertDispatched(SendPaymentToVtigerJob::class);
     }
 
     /**

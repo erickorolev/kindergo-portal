@@ -6,3 +6,4 @@ extensions:
 exclude:
   - vendor
   - var
+  - storage

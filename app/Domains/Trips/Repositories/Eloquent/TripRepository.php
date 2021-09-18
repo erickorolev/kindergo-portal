@@ -11,6 +11,12 @@ use Illuminate\Pagination\LengthAwarePaginator;
 final class TripRepository extends \Parents\Repositories\Repository implements TripRepositoryInterface
 {
 
+    /**
+     * @param  string  $search
+     * @param  int  $pagination
+     * @return LengthAwarePaginator
+     * @psalm-suppress UndefinedMagicMethod
+     */
     public function basicPaginate(string $search, int $pagination): LengthAwarePaginator
     {
         /** @var LengthAwarePaginator $trips */
