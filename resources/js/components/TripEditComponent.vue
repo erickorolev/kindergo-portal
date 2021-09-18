@@ -419,9 +419,9 @@ export default defineComponent({
         vm.trip.childrens = response.data.data.attributes.childrens;
         vm.trip.duration = response.data.data.attributes.duration;
         vm.trip.distance = response.data.data.attributes.distance;
-        vm.trip.parking_fee = response.data.data.attributes.parking_cost.value;
+        vm.trip.parking_fee = response.data.data.attributes.parking_cost?response.data.data.attributes.parking_cost.value:"";
         vm.trip.attendant_income =
-          response.data.data.attributes.attendant_income.value;
+          response.data.data.attributes.attendant_income?response.data.data.attributes.attendant_income.value:"";
         vm.trip.scheduled_wait_where =
           response.data.data.attributes.scheduled_wait_where;
         vm.trip.scheduled_wait_from =
@@ -432,7 +432,7 @@ export default defineComponent({
           response.data.data.attributes.not_scheduled_wait_from;
         vm.trip.description = response.data.data.attributes.description;
         vm.trip.parking_info = response.data.data.attributes.parking_info;
-        vm.status_value = response.data.data.attributes.status.value;
+        vm.status_value = response.data.data.attributes.status?response.data.data.attributes.status.value:"";
         vm.trip.media =
           response.data.data.attributes.media.length > 0
             ? response.data.data.attributes.media[0].url
